@@ -1,0 +1,70 @@
+:root{
+  --white: #FFFFFF;
+  --black: #000000;
+  --primary: rgb(51, 51, 51);
+  --secondary: #2F328A;
+
+  --fs-xxs: 0.625rem; 
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;  
+  --fs-lg: 1.25rem; 
+  --fs-xl: 1.5rem;  
+  --fs-2xl: 2rem;   
+  --fs-3xl: 2.5rem; 
+  --fs-4xl: 3rem; 
+
+  --fw-thin: 100;
+  --fw-extra-light: 200;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
+  --fw-black: 900;
+} 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* border: 1px solid black; */
+  font-family: 'Oswald Variable', sans-serif;
+  /* font-family: 'Open Sans Variable', sans-serif; */
+  -webkit-tap-highlight-color: transparent;
+  /* outline: none; */
+}
+
+html{
+  font-size: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+body{
+  font-size: var(--fs-base);
+  /* line-height: 1.6; */
+}
+
+img, svg, input, video, textarea{
+  width: 100%;
+  height: 100%;
+
+  outline: none;
+  border: none;
+  border-radius: inherit;
+
+  font-size: var(--fs-base);
+}

@@ -1,0 +1,16 @@
+#not_found_wrapper{
+    width: 100%;
+    height: 95.5vh;
+}
+
+#not_found_wrapper > div{
+    text-align: center;
+}
+
+#not_found_wrapper > div > h1{
+    margin-bottom: 15px;
+}
+
+#not_found_wrapper > div > p{
+    font-size: var(--fs-sm);
+}

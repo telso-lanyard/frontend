@@ -1,0 +1,49 @@
+#main_items_wrapper{
+    width: 100%;
+    height: fit-content;
+
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 50px 25px;
+}
+
+#main_items_wrapper > div{
+    width: 200px;
+    height: fit-content;
+
+    border: 1px solid rgb(0 0 0 / 15%);
+    border-radius: 7.5px;
+    padding: 5px;
+    padding-bottom: 10px;
+
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+#main_items_wrapper > div:hover{
+    border: 3px solid black;
+}
+
+#main_items_wrapper > div > div:nth-child(1){
+    border-top-left-radius: 7.5px;
+    border-top-right-radius: 7.5px;
+}
+
+#main_items_wrapper > div > div:nth-child(2){
+    padding: 10px;
+}
+
+#main_items_wrapper > div > div:nth-child(2) > div:nth-child(1){
+    font-size: var(--fs-sm);
+    letter-spacing: 1px;
+}
+
+#main_items_wrapper > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(2){
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-light);
+}
+
+#main_items_wrapper > div > div:nth-child(2) > div:nth-child(2){
+    width: 20px;
+    aspect-ratio: 1/1;
+}
