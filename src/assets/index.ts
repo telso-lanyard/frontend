@@ -1,5 +1,6 @@
 export { default as eye } from "./icons/eye.svg";
 export { default as send } from "./icons/send.svg";
+export { default as cart } from "./icons/cart.svg";
 export { default as check } from "./icons/check.svg";
 export { default as close } from "./icons/close.svg";
 export { default as eye_off } from "./icons/eye_off.svg";

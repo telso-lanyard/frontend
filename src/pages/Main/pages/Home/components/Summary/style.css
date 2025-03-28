@@ -78,12 +78,50 @@
     font-size: var(--fs-xs);
 }
 
-#main_summary_wrapper > div > div:nth-child(7){
-    font-size: var(--fs-xs);
-    margin-bottom: 70px;
+#main_summary_wrapper > div > div:nth-child(6){
+    margin-bottom: 1.25px;
 }
 
-#main_summary_wrapper > div > div:nth-child(8){
+#main_summary_wrapper > div > div:nth-child(7){
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-light);
+    margin-bottom: 17.5px;
+}
+
+#main_summary_wrapper > div > div:nth-child(8) > div{
+    width: 100%;
+
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-light);
+
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #9a9a9a;
+}
+
+#main_summary_wrapper > div > div:nth-child(8) > div:nth-child(1){
+    font-size: var(--fs-normal);
+    font-weight: var(--fw-normal);
+}
+
+#main_summary_wrapper > div > div:nth-child(8) > div:last-child{
+    margin-bottom: 0;
+}
+
+#main_summary_wrapper > div > div:nth-child(8) > div > div{
+    width: 100%;
+}
+
+#main_summary_wrapper > div > div:nth-child(8) > div:last-child > div:nth-child(1){
+    width: 75%;
+}
+
+#main_summary_wrapper > div > div:nth-child(8) > div:last-child > div:last-child{
+    width: 25%;
+    font-weight: var(--fw-medium);
+}
+
+#main_summary_wrapper > div > div:nth-child(9){
     width: fit-content;
     height: fit-content;
 
@@ -93,14 +131,16 @@
     color: white;
     background-color: var(--primary);
     cursor: pointer;
+
+    margin-top: 50px;
 }
 
-#main_summary_wrapper > div > div:nth-child(8) > div:nth-child(1){
+#main_summary_wrapper > div > div:nth-child(9) > div:nth-child(1){
     width: 17.5px;
     aspect-ratio: 1/1;
 }
 
-#main_summary_wrapper > div > div:nth-child(8) > div:nth-child(2){
+#main_summary_wrapper > div > div:nth-child(9) > div:nth-child(2){
     margin-left: 10px;
     font-size: var(--fs-xs);
 }

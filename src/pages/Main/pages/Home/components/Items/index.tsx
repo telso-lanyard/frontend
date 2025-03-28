@@ -8,8 +8,16 @@ import Request from "../../../../../../utils/requests";
 import style_map from "../../../../../../utils/style_map";
 
 function Items({ ...props }) {
-  const [items, setItems] = useState<{ name: string; price: number }[]>([]);
-  const [item, setItem] = useState<{ name: string; price: number }>();
+  const [items, setItems] = useState<
+    {
+      _id: string;
+      name: string;
+      variants: { name: string; price: number; qty: number }[];
+    }[]
+  >([]);
+  const [variant, setVariant] = useState<{ name: string; price: number; qty: number; }>();
+
+  const [item, setItem] = useState({ _id: "", name: "" });
 
   useEffect(() => {
     Request.get({
@@ -28,31 +36,62 @@ function Items({ ...props }) {
     <>
       <div
         id="main_items_wrapper"
-        style={style_map.flex(["flex-start", "center"])}
+        style={
+          props.pageWidth < 850
+            ? style_map.flex(["center", "space-between"])
+            : style_map.flex(["center", "flex-start", "column"])
+        }
       >
         {items.map((item, i) => (
-          <div key={i} onClick={() => setItem(item)}>
-            <div style={style_map.flex(["center", "center"])}>
-              <img src={assets["product_img_0"]} alt="" />
-            </div>
-            <div style={style_map.flex(["center", "space-between"])}>
+          <div
+            key={i}
+            style={
+              props.pageWidth < 850
+                ? style_map.flex(["center", "flex-start", "column"])
+                : style_map.flex(["center", "center"])
+            }
+          >
+            {item.variants.map((variant, i: number) => (
               <div
-                style={style_map.flex(["flex-start", "flex-start", "column"])}
+                key={i}
+                onClick={() => {
+                  const { variants, ...specifiedItem } = item;
+                  setItem(specifiedItem);
+                  setVariant(variant);
+                }}
               >
-                <div>{item.name.toUpperCase()}</div>
-                <div>&#8358;{item.price}</div>
+                <div style={style_map.flex(["center", "center"])}>
+                  <img src={assets["product_img_0"]} alt="" />
+                </div>
+                <div style={style_map.flex(["center", "space-between"])}>
+                  <div
+                    style={style_map.flex([
+                      "flex-start",
+                      "flex-start",
+                      "column",
+                    ])}
+                  >
+                    <div>
+                      {item.name.toUpperCase()} | {variant.name.toUpperCase()}
+                    </div>
+                    <div>
+                      &#8358;{new Intl.NumberFormat().format(variant.price)}
+                    </div>
+                  </div>
+                  <div style={style_map.flex(["center", "center"])}>
+                    <img src={assets.add_to_cart} alt="" />
+                  </div>
+                </div>
               </div>
-              <div style={style_map.flex(["center", "center"])}>
-                <img src={assets.add_to_cart} alt="" />
-              </div>
-            </div>
+            ))}
           </div>
         ))}
       </div>
-      {item && (
+      {variant && (
         <Item
           item={item}
-          setItem={setItem}
+          variant={variant}
+          setVariant={setVariant}
           setCart={props.setCart}
           pageWidth={props.pageWidth}
         />

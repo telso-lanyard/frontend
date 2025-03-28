@@ -13,7 +13,13 @@ function Hero() {
   return (
     <div id="main_hero_wrapper">
       <div style={style_map.flex(["center", "center"])}>
-        <img src={assets.hero_bg} alt="" />
+        <img
+          src={assets.hero_bg}
+          alt=""
+          onContextMenu={(e) => e.preventDefault()}
+          onDragStart={(e) => e.preventDefault()}
+          style={{ pointerEvents: "none", userSelect: "none" }}
+        />
       </div>
       <div style={style_map.flex(["center", "flex-start"])} onClick={scroll}>
         <div style={style_map.flex(["center", "center"])}>

@@ -9,12 +9,11 @@ import Nav from "../../../../components/Nav";
 import Footer from "../../../../components/Footer";
 
 function Home({ ...props }) {
+  const location = useLocation();
+  const [cart, setCart] = useState([]);
   const [navStyle, setNavStyle] = useState({
     background: "black",
   });
-  const [cart, setCart] = useState([]);
-
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,14 +31,15 @@ function Home({ ...props }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [location.pathname]);
+  
 
   return (
     <>
-      <Nav style={navStyle} cart={cart} />
+      <Nav style={navStyle} cart={cart} setCart={setCart} />
       <Hero />
       <Landing />
       <Items pageWidth={props.pageWidth} setCart={setCart} />
-      <Summary pageWidth={props.pageWidth} cart={cart} />
+      <Summary cart={cart} />
       <Footer />
     </>
   );

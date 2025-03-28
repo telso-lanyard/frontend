@@ -11,7 +11,7 @@ function Footer() {
       <div style={style_map.flex(["center", "center"])}>
         <img src={images.logo} alt="" />
       </div>
-      <div>This website is the property of TELSO LLC</div>
+      <div>This website is the property of TELSO LIMITED</div>
     </div>
   );
 }

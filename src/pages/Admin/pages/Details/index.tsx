@@ -1,6 +1,6 @@
 
 
-function Details({ ...props }) {
+function Details() {
   return (
     <div>Details</div>
   )

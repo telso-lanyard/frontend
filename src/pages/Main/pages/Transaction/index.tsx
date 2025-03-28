@@ -23,11 +23,13 @@ function Transaction() {
             </div>
             <div>
               &#8358;
-              {
-                location.pathname.split("/")[
-                  location.pathname.split("/").length - 1
-                ]
-              }
+              {new Intl.NumberFormat().format(
+                parseInt(
+                  location.pathname.split("/")[
+                    location.pathname.split("/").length - 1
+                  ]
+                )
+              )}
             </div>
           </div>
           <div>
@@ -70,8 +72,16 @@ function Transaction() {
           <div
             onClick={() => {
               toast.success(
-                "Payment will be reviewed and delivery information will be communicated",
-                { style: { fontSize: "var(--fs-sm)" } }
+                <div
+                  style={{
+                    fontSize: "var(--fs-sm)",
+                    padding: "3.75px 15px",
+                  }}
+                >
+                  Payment will be reviewed and delivery information will be
+                  communicated
+                </div>,
+                { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
               );
               setTimeout(() => navigate("/"), 1000);
             }}

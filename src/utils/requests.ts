@@ -18,34 +18,17 @@ const Request = {
     return axios.get(`${urls.apiURL}${url_mod}`, config);
   },
 
-  post: async ({ url_mod = "", query, body, token, files }: RequestOptions) => {
-    const formData = new FormData();
-
-    if (files) {
-      files.forEach((file, _) => {
-        formData.append("media", file);
-      });
-    }
-
-    if (body) {
-      Object.entries(body).forEach(([key, value]) => {
-        if (typeof value === "object") {
-          formData.append(key, JSON.stringify(value));
-        } else {
-          formData.append(key, value as string);
-        }
-      });
-    }
-
+  post: async ({ url_mod = "", query, body, token }: RequestOptions) => {
     const config: AxiosRequestConfig = {
       params: query,
       headers: {
+        "Content-Type": "application/json",
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     };
-
-    return axios.post(`${urls.apiURL}${url_mod}`, formData, config);
-  },
+  
+    return axios.post(`${urls.apiURL}${url_mod}`, body, config);
+  },  
 
   patch: async ({
     url_mod = "",

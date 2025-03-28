@@ -8,8 +8,8 @@ import Details from "./pages/Details";
 import NotFound from "../../components/404";
 
 function Admin({ ...props }) {
-  const [userID, setuserID] = useState("");
-  const [userToken, setuserToken] = useState("");
+  const [_userID, setuserID] = useState("");
+  const [_userToken, setuserToken] = useState("");
 
   return (
     <>
@@ -21,11 +21,13 @@ function Admin({ ...props }) {
         />
         <Route
           path="orders"
-          element={<Orders userID={userID} userToken={userToken} />}
+          // element={<Orders userID={userID} userToken={userToken} />}
+          element={<Orders />}
         />
         <Route
           path="orders/*"
-          element={<Details userID={userID} userToken={userToken} />}
+          // element={<Details userID={userID} userToken={userToken} />}
+          element={<Details />}
         />
         <Route path="/*" element={<NotFound pageWidth={props.pageWidth} />} />
       </Routes>
