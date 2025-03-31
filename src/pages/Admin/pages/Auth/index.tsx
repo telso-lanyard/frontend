@@ -10,18 +10,16 @@ import style_map from "../../../../utils/style_map";
 
 function Auth({ ...props }) {
   const navigate = useNavigate();
-  const [_email, setemail] = useState("");
-  const [_password, setpassword] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   const [passwordVisibility, setpasswordVisibility] = useState(false);
 
   function fetch() {
     Request.get({
       url_mod: "auth/login",
       query: {
-        // email: email,
-        email: "telsoofficial@gmail.com",
-        // password: password,
-        password: "TellStories1050",
+        email: email,
+        password: password,
         collection: "admin",
       },
     })
