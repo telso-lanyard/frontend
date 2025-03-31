@@ -6,6 +6,8 @@
 
 #main_auth_login_wrapper > *{
     margin-bottom: 20px;
+
+    transform: translateY(-65px);
 }
 
 #main_auth_login_wrapper > *:nth-child(1){

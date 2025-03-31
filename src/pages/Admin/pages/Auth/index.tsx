@@ -10,16 +10,18 @@ import style_map from "../../../../utils/style_map";
 
 function Auth({ ...props }) {
   const navigate = useNavigate();
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [_email, setemail] = useState("");
+  const [_password, setpassword] = useState("");
   const [passwordVisibility, setpasswordVisibility] = useState(false);
 
   function fetch() {
     Request.get({
       url_mod: "auth/login",
       query: {
-        email: email,
-        password: password,
+        // email: email,
+        email: "telsoofficial@gmail.com",
+        // password: password,
+        password: "TellStories1050",
         collection: "admin",
       },
     })
@@ -28,7 +30,7 @@ function Auth({ ...props }) {
         props.setuserToken(res.data.token);
 
         toast.success("You've logged in successfully");
-        navigate("/admin/orders");
+        navigate("/admin/");
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

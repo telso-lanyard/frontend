@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import "./style.css";
 import Item from "./components/Item";
+import urls from "../../../../../../utils/urls";
 import * as assets from "../../../../../../assets";
 import Request from "../../../../../../utils/requests";
 import style_map from "../../../../../../utils/style_map";
@@ -12,10 +13,14 @@ function Items({ ...props }) {
     {
       _id: string;
       name: string;
-      variants: { name: string; price: number; qty: number }[];
+      variants: { name: string; price: number; qty: number; media: string }[];
     }[]
   >([]);
-  const [variant, setVariant] = useState<{ name: string; price: number; qty: number; }>();
+  const [variant, setVariant] = useState<{
+    name: string;
+    price: number;
+    qty: number;
+  }>();
 
   const [item, setItem] = useState({ _id: "", name: "" });
 
@@ -24,7 +29,7 @@ function Items({ ...props }) {
       url_mod: "items",
     })
       .then((res) => {
-        setItems(res.data.documents);
+        setItems(res.data.documents.reverse());
       })
       .catch((error) => {
         console.error("Error fetching items:", error);
@@ -61,7 +66,7 @@ function Items({ ...props }) {
                 }}
               >
                 <div style={style_map.flex(["center", "center"])}>
-                  <img src={assets["product_img_0"]} alt="" />
+                  <img src={`${urls.media}/${variant.media}`} alt="" />
                 </div>
                 <div style={style_map.flex(["center", "space-between"])}>
                   <div

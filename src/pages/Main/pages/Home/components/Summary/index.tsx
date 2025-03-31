@@ -174,7 +174,7 @@ function Summary({ ...props }) {
           </div>
           {props.cart.map((item: (typeof props.cart)[0], i: number) => (
             <div key={i} style={style_map.flex(["center", "space-between"])}>
-              <div>{item.variant.name.toUpperCase()}</div>
+              <div>{item.name.toUpperCase()} | {item.variant.name.toUpperCase()}</div>
               <div>
                 &#8358;{new Intl.NumberFormat().format(item.variant.price)}
               </div>

@@ -5,6 +5,7 @@ import "./style.css";
 import * as assets from "../../../../../../../../assets";
 import style_map from "../../../../../../../../utils/style_map";
 import Input from "../../../../../../../../components/Input";
+import urls from "../../../../../../../../utils/urls";
 
 function Item({ ...props }) {
   const [data, setData] = useState({
@@ -32,7 +33,7 @@ function Item({ ...props }) {
         }
       >
         <div style={style_map.flex(["center", "center"])}>
-          <img src={assets.product_img_0} alt="" />
+          <img src={`${urls.media}/${props.variant.media}`} alt="" />
         </div>
         <div style={style_map.flex(["flex-start", "flex-start", "column"])}>
           <div style={style_map.flex(["flex-start", "space-between"])}>
