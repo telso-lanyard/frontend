@@ -24,11 +24,35 @@ function Items({ ...props }) {
     })
       .then(() => {
         fetch();
-        toast.success("Quantity updated successfully");
+        toast.success(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            Quantity updated successfully
+          </div>,
+          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+        );
       })
       .catch((error) => {
         console.error("Error patching items:", error);
-        toast.error(error.response.data.message);
+        toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${error.response.data.message}`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
       });
   }
 
@@ -41,7 +65,21 @@ function Items({ ...props }) {
       })
       .catch((error) => {
         console.error("Error fetching items:", error);
-        toast.error(error.response.data.message);
+        toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${error.response.data.message}`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
       });
   }
 
@@ -64,7 +102,7 @@ function Items({ ...props }) {
               style={style_map.flex(["flex-start", "flex-start", "column"])}
             >
               <div style={style_map.flex(["center", "center"])}>
-                <img src={`${urls.media}/${variant.media}`} alt="" />
+                <img src={`${urls.media}${variant.media}`} alt="" />
               </div>
               <div
                 style={style_map.flex(["flex-start", "flex-start", "column"])}

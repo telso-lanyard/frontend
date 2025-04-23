@@ -27,12 +27,36 @@ function Auth({ ...props }) {
         props.setuserID(res.data.user_id);
         props.setuserToken(res.data.token);
 
-        toast.success("You've logged in successfully");
+        toast.success(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            You've logged in successfully
+          </div>,
+          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+        );
         navigate("/admin/");
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        toast.error(error.response.data.message);
+        toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${error.response.data.message}`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
       });
   }
 

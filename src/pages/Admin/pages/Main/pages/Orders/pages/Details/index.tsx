@@ -34,7 +34,21 @@ function Details({ ...props }) {
       })
       .catch((error) => {
         console.error("Error fetching orders:", error);
-        toast.error(error.response.data.message);
+        toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${error.response.data.message}`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
       });
   }
 
@@ -46,11 +60,36 @@ function Details({ ...props }) {
     })
       .then(() => {
         fetch();
-        toast.success("Order updated successfully");
+
+        toast.success(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            Order updated successfully
+          </div>,
+          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+        );
       })
       .catch((error) => {
         console.error("Error updating orders:", error);
-        toast.error(error.response.data.message);
+        toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${error.response.data.message}`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
       });
   }
 

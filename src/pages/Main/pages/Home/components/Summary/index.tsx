@@ -26,11 +26,58 @@ function Summary({ ...props }) {
   function submit() {
     (["name", "phone", "email", "address"] as const).forEach((value) => {
       if (order.contact[value].length <= 3) {
-        toast.error(`Invalid length for ${value} parameter in Contact Details`);
+        return toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`Invalid length for ${value} parameter in Contact Details`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
       }
     });
 
-    if (order)
+    if (order.cart.length <= 0)
+      return toast.error(
+        <div
+          style={{
+            fontSize: "var(--fs-sm)",
+            padding: "3.75px 15px",
+          }}
+        >
+          Cart is empty, please select an item
+        </div>,
+        {
+          hideProgressBar: true,
+          closeOnClick: true,
+          autoClose: 3000,
+        }
+      );
+
+    if (order) {
+      toast.success(
+        <div
+          style={{
+            fontSize: "var(--fs-sm)",
+            padding: "3.75px 15px",
+          }}
+        >
+          Your order is being processed
+        </div>,
+        {
+          hideProgressBar: true,
+          closeOnClick: true,
+          autoClose: 3000,
+        }
+      );
+
       Request.post({
         url_mod: "orders",
         body: order,
@@ -48,8 +95,23 @@ function Summary({ ...props }) {
         )
         .catch((error) => {
           console.error("Error posting order:", error);
-          toast.error(error.response.data.message);
+          toast.error(
+            <div
+              style={{
+                fontSize: "var(--fs-sm)",
+                padding: "3.75px 15px",
+              }}
+            >
+              {`${error.response.data.message}`}
+            </div>,
+            {
+              hideProgressBar: true,
+              closeOnClick: true,
+              autoClose: 3000,
+            }
+          );
         });
+    }
   }
 
   return (
@@ -174,13 +236,18 @@ function Summary({ ...props }) {
           </div>
           {props.cart.map((item: (typeof props.cart)[0], i: number) => (
             <div key={i} style={style_map.flex(["center", "space-between"])}>
-              <div>{item.name.toUpperCase()} | {item.variant.name.toUpperCase()}</div>
+              <div>
+                {item.name.toUpperCase()} | {item.variant.name.toUpperCase()}
+              </div>
               <div>
                 &#8358;{new Intl.NumberFormat().format(item.variant.price)}
               </div>
               <div>{item.variant.qty}</div>
               <div>
-                &#8358;{new Intl.NumberFormat().format(item.variant.price * item.variant.qty)}
+                &#8358;
+                {new Intl.NumberFormat().format(
+                  item.variant.price * item.variant.qty
+                )}
               </div>
             </div>
           ))}

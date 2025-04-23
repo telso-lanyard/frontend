@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./style.css";
 import * as images from "../../assets";
 import style_map from "../../utils/style_map";
@@ -12,6 +14,13 @@ function Footer() {
         <img src={images.logo} alt="" />
       </div>
       <div>This website is the property of TELSO LIMITED</div>
+      <div style={style_map.flex(["center", "center"])}>
+        <Link to="/">Home</Link>
+        <div />
+        <Link to="/story">THE LANYARD - STORY</Link>
+        <div />
+        <Link to="/about">About Us</Link>
+      </div>
     </div>
   );
 }

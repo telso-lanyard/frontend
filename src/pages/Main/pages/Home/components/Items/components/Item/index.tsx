@@ -6,8 +6,10 @@ import * as assets from "../../../../../../../../assets";
 import style_map from "../../../../../../../../utils/style_map";
 import Input from "../../../../../../../../components/Input";
 import urls from "../../../../../../../../utils/urls";
+import Request from "../../../../../../../../utils/requests";
 
 function Item({ ...props }) {
+  const [count, setCount] = useState(0);
   const [data, setData] = useState({
     _id: props.item._id,
     name: props.item.name,
@@ -17,6 +19,35 @@ function Item({ ...props }) {
   useEffect(() => {
     data.variant.qty = 0;
     document.body.style.overflow = "hidden";
+
+    Request.get({
+      url_mod: "items",
+    })
+      .then((res) => {
+        setCount(
+          res.data.documents
+            .filter((i: any) => i.name == props.item.name)[0]
+            .variants.filter((i: any) => i.name == props.variant.name)[0].qty
+        );
+      })
+      .catch((error) => {
+        console.error("Error fetching items:", error);
+        toast.error(
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${error.response.data.message}`}
+          </div>,
+          {
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 3000,
+          }
+        );
+      });
 
     return () => {
       document.body.style.overflow = "auto";
@@ -33,7 +64,7 @@ function Item({ ...props }) {
         }
       >
         <div style={style_map.flex(["center", "center"])}>
-          <img src={`${urls.media}/${props.variant.media}`} alt="" />
+          <img src={`${urls.media}${props.variant.media}`} alt="" />
         </div>
         <div style={style_map.flex(["flex-start", "flex-start", "column"])}>
           <div style={style_map.flex(["flex-start", "space-between"])}>
@@ -68,12 +99,30 @@ function Item({ ...props }) {
             <div>
               <Input
                 type="number"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const value = Number(e.target.value);
+                  if (value > count)
+                    toast.error(
+                      <div
+                        style={{
+                          fontSize: "var(--fs-sm)",
+                          padding: "3.75px 15px",
+                        }}
+                      >
+                        {`You can't select more than ${count}`}
+                      </div>,
+                      {
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        autoClose: 3000,
+                      }
+                    );
+
                   setData((prev) => ({
                     ...prev,
-                    variant: { ...prev.variant, qty: Number(e.target.value) },
-                  }))
-                }
+                    variant: { ...prev.variant, qty: value },
+                  }));
+                }}
               />
             </div>
           </div>
@@ -81,7 +130,39 @@ function Item({ ...props }) {
             style={style_map.flex(["center", "flex-start"])}
             onClick={() => {
               if (data.variant.qty <= 0)
-                return toast.error("Please select a viable quantity");
+                return toast.error(
+                  <div
+                    style={{
+                      fontSize: "var(--fs-sm)",
+                      padding: "3.75px 15px",
+                    }}
+                  >
+                    Please select a viable quantity
+                  </div>,
+                  {
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    autoClose: 3000,
+                  }
+                );
+
+              if (data.variant.qty > count)
+                return toast.error(
+                  <div
+                    style={{
+                      fontSize: "var(--fs-sm)",
+                      padding: "3.75px 15px",
+                    }}
+                  >
+                    {`You can't select more than ${count}`}
+                  </div>,
+                  {
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    autoClose: 3000,
+                  }
+                );
+
               props.setCart((prev: any) => [...prev, data]);
               props.setVariant(undefined);
               toast.success(
