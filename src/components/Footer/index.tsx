@@ -16,10 +16,13 @@ function Footer() {
       <div>This website is the property of TELSO LIMITED</div>
       <div style={style_map.flex(["center", "center"])}>
         <Link to="/">Home</Link>
-        <div />
-        <Link to="/story">THE LANYARD - STORY</Link>
+
         <div />
         <Link to="/about">About Us</Link>
+        <div />
+        <Link to="/contact">Contact Us</Link>
+        <div />
+        <Link to="/story">THE LANYARD - STORY</Link>
       </div>
     </div>
   );

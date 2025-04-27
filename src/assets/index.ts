@@ -18,10 +18,9 @@ export { default as add_to_cart_white } from "./icons/add_to_cart_white.svg";
 
 export { default as hero_bg } from "./images/hero-bg.png";
 export { default as landing_img } from "./images/landing-img.png";
-export { default as product_img_0 } from "./images/product-img_0.png";
-export { default as product_img_1 } from "./images/product-img_1.png";
 export { default as about } from "./images/about.jpg";
 export { default as story } from "./images/story.jpg";
+export { default as story_mobile } from "./images/story_mobile.jpg";
 
 export { default as logo } from "./logos/main.png";
 export { default as logo_white } from "./logos/main_white.png";

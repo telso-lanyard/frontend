@@ -40,7 +40,7 @@
     margin: 0;
 }
 
-#footer_wrapper > div:nth-child(3) > div:nth-child(2), #footer_wrapper > div:nth-child(3) > div:nth-child(4){
+#footer_wrapper > div:nth-child(3) > div:nth-child(2), #footer_wrapper > div:nth-child(3) > div:nth-child(4), #footer_wrapper > div:nth-child(3) > div:nth-child(6){
     width: 1px;
     height: var(--fs-sm);
 
