@@ -29,9 +29,17 @@ function Contact() {
       if (formData[el as keyof typeof formData].length <= 1) {
         isValid = false;
         toast.error(
-          `${
-            el.charAt(0).toUpperCase() + el.slice(1)
-          } not entered or value entered is not valid`
+          <div
+            style={{
+              fontSize: "var(--fs-sm)",
+              padding: "3.75px 15px",
+            }}
+          >
+            {`${
+              el.charAt(0).toUpperCase() + el.slice(1)
+            } not entered or value entered is not valid`}
+          </div>,
+          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
         );
       }
     });
@@ -43,7 +51,17 @@ function Contact() {
         body: formData,
       })
         .then((_) => {
-          toast.success("Message sent successfully");
+          toast.success(
+            <div
+              style={{
+                fontSize: "var(--fs-sm)",
+                padding: "3.75px 15px",
+              }}
+            >
+              Message sent successfully
+            </div>,
+            { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+          );
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
