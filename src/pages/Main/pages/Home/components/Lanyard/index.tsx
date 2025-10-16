@@ -11,13 +11,13 @@ function Lanyard() {
       style={style_map.flex(["center", "flex-end", "column"])}
     >
       <div>
-        <div>MADE TO MOVE WITH YOUR STORY.</div>
+        <div>THE LANYARD</div>
         <div>Wear the World.</div>
       </div>
       <div style={style_map.flex(["center", "center"])}>
         <img src={assets.lanyard_sample} alt="" />
       </div>
-      <Link to="/discover">Learn More</Link>
+      <Link to="/discover">Discover the story →</Link>
       <div>Shop Now</div>
     </div>
   );

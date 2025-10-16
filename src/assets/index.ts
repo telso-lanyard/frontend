@@ -23,7 +23,7 @@ export { default as about } from "./images/about.jpg";
 export { default as story } from "./images/story.jpg";
 export { default as story_mobile } from "./images/story_mobile.jpg";
 export { default as case_sample } from "./images/case-sample.png";
-export { default as lanyard_sample } from "./images/lanyard-sample.jpeg";
+export { default as lanyard_sample } from "./images/lanyard-sample.png";
 
 export { default as logo } from "./logos/main.png";
 export { default as logo_red } from "./logos/main_red.png";

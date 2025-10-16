@@ -30,7 +30,7 @@ function Landing({ ...props }) {
       strokeDashoffset: 0,
       duration: 0.5,
       ease: "power1.inOut",
-      stagger: 0.175,
+      stagger: .1,
     })
       .to("#home_landing_wrapper > div:nth-child(2) > div:nth-child(1)", {
         transform: "translateY(0)",
@@ -51,7 +51,7 @@ function Landing({ ...props }) {
         opacity: 1,
         duration: 0.2,
         cursor: "pointer",
-      });
+      }, "-=.4");
 
     return () => {
       tl.kill();
@@ -268,7 +268,7 @@ function Landing({ ...props }) {
         </div>
       </div>
       <div style={style_map.flex(["center", "flex-start", "column"])}>
-        <div>THE Case One.</div>
+        <div>THE CASE One.</div>
         <div>Expression. Evolved.</div>
       </div>
       <div style={style_map.flex(["center", "center"])}>

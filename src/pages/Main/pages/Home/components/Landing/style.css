@@ -1,6 +1,6 @@
 #home_landing_wrapper {
   width: 100%;
-  height: 90vh;
+  height: 87.5vh;
 
   overflow: hidden;
   position: relative;
@@ -21,7 +21,7 @@
 
 #home_landing_wrapper > div:nth-child(1) > div:nth-child(2) {
   width: 32.5%;
-  transform: translateY(-35%);
+  transform: translate(7.75%, -70%);
 }
 
 #home_landing_wrapper > div:nth-child(2) {
@@ -65,14 +65,17 @@
 }
 
 #home_landing_wrapper > div:nth-child(4) {
-  padding: 3.75px 25px;
+  padding: 3.75px 45px;
   border-radius: 50px;
   background-color: white;
 
   z-index: 1;
   transition: all 300ms;
   border: 1px solid white;
-  transform: translateY(-50%);
+  transform: translateY(-20%);
+  
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-light);
 
   opacity: 0;
 }

@@ -11,11 +11,11 @@ function Home({ ...props }) {
     const html = document.documentElement;
     const body = document.body;
 
-    let prevScrollY = 0;
+    // let prevScrollY = 0;
     let prevBodyStyles: Partial<CSSStyleDeclaration> = {};
 
     if (!loaded) {
-      prevScrollY = window.scrollY || window.pageYOffset || 0;
+      // prevScrollY = window.scrollY || window.pageYOffset || 0;
 
       prevBodyStyles = {
         position: body.style.position,
