@@ -15,13 +15,17 @@ export { default as close_white } from "./icons/close_white.svg";
 export { default as add_to_cart } from "./icons/add_to_cart.svg";
 export { default as keyboard_down } from "./icons/keyboard_down.svg";
 export { default as add_to_cart_white } from "./icons/add_to_cart_white.svg";
+export { default as bag } from "./icons/bag.svg";
 
 export { default as hero_bg } from "./images/hero-bg.png";
 export { default as landing_img } from "./images/landing-img.png";
 export { default as about } from "./images/about.jpg";
 export { default as story } from "./images/story.jpg";
 export { default as story_mobile } from "./images/story_mobile.jpg";
+export { default as case_sample } from "./images/case-sample.png";
+export { default as lanyard_sample } from "./images/lanyard-sample.jpeg";
 
 export { default as logo } from "./logos/main.png";
+export { default as logo_red } from "./logos/main_red.png";
 export { default as logo_white } from "./logos/main_white.png";
 

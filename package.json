@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@fontsource-variable/oswald": "^5.2.5",
+    "@fontsource/give-you-glory": "^5.2.8",
     "axios": "^1.8.4",
+    "gsap": "^3.13.0",
     "postcss-preset-env": "^10.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

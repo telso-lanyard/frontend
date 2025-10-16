@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 
 // @ts-ignore
-import "@fontsource-variable/oswald";
+import '@fontsource/give-you-glory';
 
 import Main from "./pages/Main";
 import Admin from "./pages/Admin";
