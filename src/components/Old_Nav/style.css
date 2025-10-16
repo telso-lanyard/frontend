@@ -1,4 +1,4 @@
-#nav_wrapper{
+#old_nav_wrapper{
     width: 100%;
     height: 9.25vh;
 
@@ -20,21 +20,21 @@
 }
 
 @media (max-width: 850px) {
-    #nav_wrapper{
+    #old_nav_wrapper{
         padding: 0 25px;
     }
 }
 
-#nav_wrapper > div:nth-child(1){
+#old_nav_wrapper > div:nth-child(1){
     height: 110%;
     aspect-ratio: 1/1;
 }
 
-#nav_wrapper > div:nth-child(1) > img{
+#old_nav_wrapper > div:nth-child(1) > img{
     object-fit: contain;
 }
 
-#nav_wrapper > div:nth-child(2){
+#old_nav_wrapper > div:nth-child(2){
     width: 30px;
     aspect-ratio: 1/1;
 }

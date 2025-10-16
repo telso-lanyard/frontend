@@ -11,9 +11,11 @@
 }
 
 #home_lanyard_wrapper > *:nth-child(1) > *:nth-child(1) {
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-extra-bold);
   margin-bottom: 5px;
+
+  font-feature-settings: "salt" 1;
 }
 
 #home_lanyard_wrapper > *:nth-child(1) > *:nth-child(2) {
@@ -32,7 +34,7 @@
 }
 
 #home_lanyard_wrapper > *:nth-child(3) {
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   text-decoration: underline;
 
   color: black;
@@ -42,9 +44,10 @@
 #home_lanyard_wrapper > *:nth-child(4) {
   color: #d41f27;
   font-family: "Give You Glory", cursive;
+  font-size: var(--fs-lg);
 
   cursor: pointer;
-  padding: 0 60px;
+  padding: 7.5px 45px;
   position: relative;
 }
 
@@ -54,7 +57,7 @@
   position: absolute;
   inset: 0;
 
-  border-radius: 20px;
+  border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 0, 0, 0.01);
   transform: translateY(-5%);

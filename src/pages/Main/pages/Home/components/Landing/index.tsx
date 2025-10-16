@@ -43,8 +43,10 @@ function Landing({ ...props }) {
         duration: 0.3,
       }, "-=.3")
       .to("#home_landing_wrapper > div:nth-child(3)", {
-        bottom: "-10px",
-        duration: 1.5,
+        // bottom: "0",
+        opacity: 1,
+        // duration: 1.5,
+        duration: 1,
         ease: "expo.inOut",
       })
       .to("#home_landing_wrapper > div:nth-child(4)", {

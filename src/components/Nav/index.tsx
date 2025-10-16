@@ -9,26 +9,28 @@ import style_map from "../../utils/style_map";
 function Nav({ ...props }) {
   const [scrollTop, setScrollTop] = useState(0);
 
-  useEffect(() => {
-    if (!props.loaded) return;
+useEffect(() => {
+  if (!props.loaded) return;
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        props.setLoaded(true);
-      },
-    });
+  const el = document.querySelector("#nav_wrapper");
+  console.log("Nav element:", el);
 
-    tl.to("#nav_wrapper", {
-      transform: "translateY(0)",
-      ease: "expo.inOut",
-      duration: 0.75,
-      delay: 0.5,
-    });
+  if (!el) {
+    console.warn("❌ #nav_wrapper not found when loaded triggered");
+    return;
+  }
 
-    return () => {
-      tl.kill();
-    };
-  }, [props.loaded]);
+  const tl = gsap.timeline();
+  tl.to(el, {
+    y: 0,
+    ease: "expo.inOut",
+    duration: 0.75,
+    delay: 0.5,
+  });
+
+  return () =>{ tl.kill();}
+}, [props.loaded]);
+
 
   useEffect(() => {
     const handleScroll = () => {
