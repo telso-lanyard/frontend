@@ -1,0 +1,60 @@
+#store_lanyard_desktop_wrapper {
+  width: 100%;
+  height: fit-content;
+
+  padding: clamp(20px, 10%, 60px) 20px 0 20px;
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(1) {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(1) {
+  color: #c4c4c4;
+  font-size: var(--fs-sm);
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(2) {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+
+  font-feature-settings: "salt" 1;
+  margin-bottom: 2.5px;
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(3) {
+  font-weight: var(--fw-light);
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(2) {
+  width: 100%;
+  height: fit-content;
+
+  padding: 15px 0;
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(2) > div:nth-child(1) {
+  max-width: 47.5%;
+  height: calc(100vh - (15px * 2));
+
+  position: sticky;
+  left: 0;
+  top: 15px;
+
+  margin-right: 300px;
+  border-radius: 100px;
+
+  /* background: rgb(186, 183, 172); */
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(2) > div:nth-child(1) > * {
+  object-fit: cover;
+}
+
+#store_lanyard_desktop_wrapper > div:nth-child(2) > div:nth-child(2) {
+  width: fit-content;
+  height: 100%;
+
+  flex: 1;
+}

@@ -25,7 +25,7 @@ useEffect(() => {
     y: 0,
     ease: "expo.inOut",
     duration: 0.75,
-    delay: 0.5,
+    delay: 0.1,
   });
 
   return () =>{ tl.kill();}

@@ -30,18 +30,22 @@ function Landing({ ...props }) {
       strokeDashoffset: 0,
       duration: 0.5,
       ease: "power1.inOut",
-      stagger: .1,
+      stagger: 0.1,
     })
       .to("#home_landing_wrapper > div:nth-child(2) > div:nth-child(1)", {
         transform: "translateY(0)",
         opacity: 1,
         duration: 0.6,
       })
-      .to("#home_landing_wrapper > div:nth-child(2) > div:nth-child(2)", {
-        transform: "translateY(0)",
-        opacity: 1,
-        duration: 0.3,
-      }, "-=.3")
+      .to(
+        "#home_landing_wrapper > div:nth-child(2) > div:nth-child(2)",
+        {
+          transform: "translateY(0)",
+          opacity: 1,
+          duration: 0.3,
+        },
+        "-=.3"
+      )
       .to("#home_landing_wrapper > div:nth-child(3)", {
         // bottom: "0",
         opacity: 1,
@@ -49,11 +53,23 @@ function Landing({ ...props }) {
         duration: 1,
         ease: "expo.inOut",
       })
-      .to("#home_landing_wrapper > div:nth-child(4)", {
-        opacity: 1,
-        duration: 0.2,
-        cursor: "pointer",
-      }, "-=.4");
+      .to(
+        "#home_landing_wrapper > div:nth-child(4)",
+        {
+          opacity: 1,
+          duration: 0.2,
+          cursor: "pointer",
+        },
+        "-=.4"
+      )
+      .to(
+        "#home_landing_wrapper",
+        {
+          height: "82.5vh",
+          duration: 0.7,
+        },
+        "-=.4"
+      );
 
     return () => {
       tl.kill();

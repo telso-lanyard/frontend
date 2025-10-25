@@ -49,6 +49,8 @@
   cursor: pointer;
   padding: 7.5px 45px;
   position: relative;
+
+  text-decoration: none;
 }
 
 #home_lanyard_wrapper > *:nth-child(4)::after {

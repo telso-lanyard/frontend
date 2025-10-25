@@ -18,7 +18,7 @@ function Lanyard() {
         <img src={assets.lanyard_sample} alt="" />
       </div>
       <Link to="/discover">Discover the story →</Link>
-      <div>Shop Now</div>
+      <Link to="store">Shop Now</Link>
     </div>
   );
 }

@@ -1,0 +1,75 @@
+import gsap from "gsap";
+import { useRef, useState, useEffect } from "react";
+
+import "./style.css";
+import Type from "./components/Type";
+// import * as assets from "../../../../../../../../assets";
+import style_map from "../../../../../../../../utils/style_map";
+
+function Desktop({ ...props }) {
+  const wrapperEl = useRef<HTMLDivElement>(null);
+  const imageEl = useRef<HTMLImageElement>(null);
+
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    const el = wrapperEl.current;
+    if (!el) return;
+
+    const handleScroll = () => setScrollTop(el.scrollTop);
+    el.addEventListener("scroll", handleScroll);
+
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const el = wrapperEl.current;
+    if (!el) return;
+
+    // const progress =
+    //   (scrollTop /
+    //     (el.scrollHeight - el.clientHeight)) *
+    //   100;
+
+    // const progress = (contentScrollTop / window.innerHeight) * 100;
+
+    // console.log(progress);
+  }, [scrollTop]);
+
+  useEffect(() => {
+    const el = imageEl.current;
+    if (!el) return;
+
+    const tl = gsap.timeline();
+    tl.to(el, { opacity: .95, duration: 0.2 })
+      .call(() => {
+        el.src = props.bg_img;
+      })
+      .to(el, { opacity: 1, duration: 0.1, ease: "expo.out" });
+
+    return () => {
+      tl.kill();
+    };
+  }, [props.bg_img]);
+
+  return (
+    <div ref={wrapperEl} id="store_lanyard_desktop_wrapper">
+      <div style={style_map.flex(["flex-start", "flex-start", "column"])}>
+        <div>New</div>
+        <div>Buy THE LANYARD</div>
+        <div>From ₦7499</div>
+      </div>
+      <div style={style_map.flex(["flex-start", "space-between"])}>
+        <div style={style_map.flex(["center", "center"])}>
+          <img ref={imageEl} src={props.bg_img} alt="" />
+        </div>
+        <div>
+          <Type type={props.type} setType={props.setType} />
+          <Type type={props.type} setType={props.setType} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Desktop;

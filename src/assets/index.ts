@@ -24,8 +24,10 @@ export { default as story } from "./images/story.jpg";
 export { default as story_mobile } from "./images/story_mobile.jpg";
 export { default as case_sample } from "./images/case-sample.png";
 export { default as lanyard_sample } from "./images/lanyard-sample.png";
+export { default as lanyard_store_bg } from "./images/lanyard-store-bg.png";
+export { default as lanyard_store_bg_elevation } from "./images/lanyard-store-bg-elevation.png";
+export { default as lanyard_store_bg_progression } from "./images/lanyard-store-bg-progression.png";
 
 export { default as logo } from "./logos/main.png";
 export { default as logo_red } from "./logos/main_red.png";
 export { default as logo_white } from "./logos/main_white.png";
-

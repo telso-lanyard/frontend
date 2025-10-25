@@ -1,0 +1,22 @@
+#store_lanyard_desktop_type_wrapper {
+  width: 100%;
+  height: 100vh;
+
+  padding: 100px 0;
+}
+
+#store_lanyard_desktop_type_wrapper > div {
+  width: 100%;
+
+  border-radius: 10px;
+
+  font-size: var(--fs-sm);
+  padding: 7.5px 0;
+
+  cursor: pointer;
+  text-align: center;
+}
+
+#store_lanyard_desktop_type_wrapper > div:nth-child(1) {
+    margin-bottom: 50px;
+}

@@ -1,6 +1,6 @@
 #home_landing_wrapper {
   width: 100%;
-  height: 87.5vh;
+  height: 100vh;
 
   overflow: hidden;
   position: relative;
@@ -37,6 +37,9 @@
 
   color: white;
   text-align: center;
+  backdrop-filter: blur(10px);
+
+  z-index: 2;
 }
 
 #home_landing_wrapper > div:nth-child(2) > div:nth-child(1) {
