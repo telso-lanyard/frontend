@@ -25,6 +25,7 @@ export { default as story_mobile } from "./images/story_mobile.jpg";
 export { default as case_sample } from "./images/case-sample.png";
 export { default as lanyard_sample } from "./images/lanyard-sample.png";
 export { default as lanyard_store_bg } from "./images/lanyard-store-bg.png";
+export { default as lanyard_store_bg_wide } from "./images/lanyard-store-bg-wide.png";
 export { default as lanyard_store_bg_elevation } from "./images/lanyard-store-bg-elevation.png";
 export { default as lanyard_store_bg_progression } from "./images/lanyard-store-bg-progression.png";
 

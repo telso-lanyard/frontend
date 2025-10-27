@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useRef, useEffect } from "react";
 
 import "./style.css";
+import * as assets from "../../../../../../../../../../assets";
 import style_map from "../../../../../../../../../../utils/style_map";
 
 function Type({ ...props }) {
@@ -14,14 +15,18 @@ function Type({ ...props }) {
     const tl = gsap.timeline();
     tl.to(el, { opacity: 0.95, duration: 0.2 })
       .call(() => {
-        el.src = props.bg_img;
+        if (props.type) {
+          props.type == "elevation"
+            ? (el.src = assets.lanyard_store_bg_elevation)
+            : (el.src = assets.lanyard_store_bg_progression);
+        }
       })
       .to(el, { opacity: 1, duration: 0.1, ease: "expo.out" });
 
     return () => {
       tl.kill();
     };
-  }, [props.bg_img]);
+  }, [props.type]);
 
   return (
     <div
@@ -34,7 +39,7 @@ function Type({ ...props }) {
         <div>From ₦7499</div>
       </div>
       <div style={style_map.flex(["center", "center"])}>
-        <img src={props.bg_img} ref={imageEl} alt="" />
+        <img ref={imageEl} src={assets.lanyard_store_bg} alt="" />
       </div>
       <div style={style_map.flex(["center", "space-between"])}>
         {["progression", "elevation"].map((type, i) => (

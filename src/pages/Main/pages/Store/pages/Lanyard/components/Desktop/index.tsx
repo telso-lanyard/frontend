@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 
 import "./style.css";
 import Type from "./components/Type";
-// import * as assets from "../../../../../../../../assets";
+import * as assets from "../../../../../../../../assets";
 import style_map from "../../../../../../../../utils/style_map";
 
 function Desktop({ ...props }) {
@@ -41,16 +41,20 @@ function Desktop({ ...props }) {
     if (!el) return;
 
     const tl = gsap.timeline();
-    tl.to(el, { opacity: .95, duration: 0.2 })
+    tl.to(el, { opacity: 0.95, duration: 0.2 })
       .call(() => {
-        el.src = props.bg_img;
+        if (props.type) {
+          props.type == "elevation"
+            ? (el.src = assets.lanyard_store_bg_elevation)
+            : (el.src = assets.lanyard_store_bg_progression);
+        }
       })
-      .to(el, { opacity: 1, duration: 0.1, ease: "expo.out" });
+      .to(el, { opacity: 1, duration: 0.3, ease: "expo.out" });
 
     return () => {
       tl.kill();
     };
-  }, [props.bg_img]);
+  }, [props.type]);
 
   return (
     <div ref={wrapperEl} id="store_lanyard_desktop_wrapper">
@@ -61,7 +65,7 @@ function Desktop({ ...props }) {
       </div>
       <div style={style_map.flex(["flex-start", "space-between"])}>
         <div style={style_map.flex(["center", "center"])}>
-          <img ref={imageEl} src={props.bg_img} alt="" />
+          <img ref={imageEl} src={assets.lanyard_store_bg_wide} alt="" />
         </div>
         <div>
           <Type type={props.type} setType={props.setType} />
