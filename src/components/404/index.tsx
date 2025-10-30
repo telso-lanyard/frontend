@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 import style_map from "../../utils/style_map";
 
 function NotFound({ ...props }) {
@@ -10,7 +10,7 @@ function NotFound({ ...props }) {
         ...props.style,
       }}
     >
-      <div style={{ transform: "translateY(-100%)" }}>
+      <div style={{ transform: "translateY(-80%)" }}>
         <h1>404 - Page Not Found</h1>
         <p>The page you are looking for does not exist.</p>
       </div>

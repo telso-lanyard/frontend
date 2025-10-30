@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 
-import "./style.css";
+import "./style.scss";
 import urls from "../../../../../../utils/urls";
 import Request from "../../../../../../utils/requests";
 import Input from "../../../../../../components/Input";
@@ -27,7 +27,7 @@ function Items({ ...props }) {
         toast.success(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -41,7 +41,7 @@ function Items({ ...props }) {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -68,7 +68,7 @@ function Items({ ...props }) {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >

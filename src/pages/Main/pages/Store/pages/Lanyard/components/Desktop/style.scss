@@ -12,19 +12,19 @@
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(1) {
   color: #c4c4c4;
-  font-size: var(--fs-sm);
+  font-size: fs(-1);
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(2) {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-bold);
+  font-size: fs(1.5);
+  font-weight: $fw-bold;
 
   font-feature-settings: "salt" 1;
   margin-bottom: 2.5px;
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(3) {
-  font-weight: var(--fw-light);
+  font-weight: $fw-light;
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(2) {

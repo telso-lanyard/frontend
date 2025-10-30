@@ -87,7 +87,7 @@
 }
 
 #admin_items_wrapper > div > div > div:nth-child(2) > div:nth-child(1) {
-  font-size: var(--fs-sm);
+  font-size: fs(-1);
   letter-spacing: 1px;
 
   margin-bottom: 10px;
@@ -112,7 +112,7 @@
     background-color: black;
     
     padding: 5px 20px;
-    font-size: var(--fs-xs);
+    font-size: fs(-2);
 
     align-self: end;
 }

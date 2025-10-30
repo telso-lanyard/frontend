@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import "./style.css";
+import "./style.scss";
 import Request from "../../../../../../../../utils/requests";
 import style_map from "../../../../../../../../utils/style_map";
 
@@ -38,7 +38,7 @@ function Main({ ...props }) {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -64,7 +64,7 @@ function Main({ ...props }) {
         toast.success(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -78,7 +78,7 @@ function Main({ ...props }) {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >

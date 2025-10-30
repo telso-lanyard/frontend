@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 
-import "./style.css";
+import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
 import style_map from "../../../../../../../../../../utils/style_map";
 

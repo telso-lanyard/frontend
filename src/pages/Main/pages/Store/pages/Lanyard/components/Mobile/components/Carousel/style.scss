@@ -1,0 +1,79 @@
+#store_lanyard_mobile_carousel_wrapper {
+  width: 100%;
+  height: 95vh;
+
+  @include flex(center, flex-start, column);
+}
+
+#store_lanyard_mobile_carousel_wrapper > div:nth-child(1) {
+  font-size: fs(4);
+  font-weight: $fw-bold;
+
+  margin-bottom: 40px;
+}
+
+#store_lanyard_mobile_carousel_wrapper > div:nth-child(2) {
+  height: 80%;
+  @include flex(center, space-between, column);
+}
+
+#store_lanyard_mobile_carousel_wrapper > div:nth-child(2) > div:nth-child(1) {
+  height: 100%;
+  @include flex(center, center);
+
+  border-radius: 50px;
+}
+
+#store_lanyard_mobile_carousel_wrapper
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > img {
+  object-fit: cover;
+}
+
+#store_lanyard_mobile_carousel_wrapper > div:nth-child(2) > div:nth-child(2) {
+  width: fit-content;
+  @include flex(center, space-between);
+
+  margin-top: 20px;
+}
+
+#store_lanyard_mobile_carousel_wrapper
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > div {
+  width: 20px;
+  height: 2.5px;
+
+  border-radius: 10px;
+  background-color: #b3b3b3;
+  @include flex(center, center);
+
+  margin-right: 5px;
+  transition: all 300ms;
+}
+
+#store_lanyard_mobile_carousel_wrapper
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > div:nth-child(1),
+#store_lanyard_mobile_carousel_wrapper
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > div:last-child {
+  width: 30px;
+  aspect-ratio: 1/1;
+  height: fit-content;
+
+  border-radius: 0;
+  background-color: transparent;
+
+  position: absolute;
+}
+
+#store_lanyard_mobile_carousel_wrapper
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > div:last-child {
+  margin-right: 0;
+}

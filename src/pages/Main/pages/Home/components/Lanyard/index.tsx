@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "./style.css";
+import "./style.scss";
 import * as assets from "../../../../../../assets";
 import style_map from "../../../../../../utils/style_map";
 

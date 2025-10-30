@@ -79,7 +79,7 @@
 }
 
 #main_items_wrapper > div > div > div:nth-child(2) > div:nth-child(1) {
-  font-size: var(--fs-sm);
+  font-size: fs(-1);
   letter-spacing: 1px;
 }
 
@@ -89,8 +89,8 @@
   > div:nth-child(2)
   > div:nth-child(1)
   > div:nth-child(2) {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-normal);
+  font-size: fs(-2);
+  font-weight: $fw-normal;
 
   margin-top: 5px;
 }

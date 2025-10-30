@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "./style.css";
+import "./style.scss";
 import Input from "../../../../components/Input";
 import Request from "../../../../utils/requests";
 import style_map from "../../../../utils/style_map";
@@ -31,7 +31,7 @@ function Contact() {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -54,7 +54,7 @@ function Contact() {
           toast.success(
             <div
               style={{
-                fontSize: "var(--fs-sm)",
+                fontSize: "var(--fs--1)",
                 padding: "3.75px 15px",
               }}
             >

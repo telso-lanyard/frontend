@@ -10,7 +10,7 @@
 
   border-radius: 10px;
 
-  font-size: var(--fs-sm);
+  font-size: fs(-1);
   padding: 7.5px 0;
 
   cursor: pointer;
@@ -18,5 +18,5 @@
 }
 
 #store_lanyard_desktop_type_wrapper > div:nth-child(1) {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }

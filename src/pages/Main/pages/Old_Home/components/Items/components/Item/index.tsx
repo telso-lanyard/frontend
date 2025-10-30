@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 
-import "./style.css";
+import "./style.scss";
 import * as assets from "../../../../../../../../assets";
 import style_map from "../../../../../../../../utils/style_map";
 import Input from "../../../../../../../../components/Input";
@@ -35,7 +35,7 @@ function Item({ ...props }) {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -105,7 +105,7 @@ function Item({ ...props }) {
                     toast.error(
                       <div
                         style={{
-                          fontSize: "var(--fs-sm)",
+                          fontSize: "var(--fs--1)",
                           padding: "3.75px 15px",
                         }}
                       >
@@ -133,7 +133,7 @@ function Item({ ...props }) {
                 return toast.error(
                   <div
                     style={{
-                      fontSize: "var(--fs-sm)",
+                      fontSize: "var(--fs--1)",
                       padding: "3.75px 15px",
                     }}
                   >
@@ -150,7 +150,7 @@ function Item({ ...props }) {
                 return toast.error(
                   <div
                     style={{
-                      fontSize: "var(--fs-sm)",
+                      fontSize: "var(--fs--1)",
                       padding: "3.75px 15px",
                     }}
                   >
@@ -168,7 +168,7 @@ function Item({ ...props }) {
               toast.success(
                 <div
                   style={{
-                    fontSize: "var(--fs-sm)",
+                    fontSize: "var(--fs--1)",
                     padding: "3.75px 15px",
                   }}
                 >

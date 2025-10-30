@@ -1,0 +1,51 @@
+#footer_wrapper {
+  width: 100%;
+  height: 37.5vh;
+
+  color: white;
+  background-color: black;
+  padding-bottom: 6.75vh;
+}
+
+#footer_wrapper > div:nth-child(1) {
+  width: 50px;
+  aspect-ratio: 1/1;
+
+  border-radius: 50%;
+  border: 2px solid white;
+
+  margin-bottom: 15px;
+}
+
+#footer_wrapper > div:nth-child(2),
+#footer_wrapper > div:nth-child(3) {
+  font-size: fs(-2);
+  font-weight: $fw-light;
+}
+
+#footer_wrapper > div:nth-child(3) {
+  width: 100%;
+  font-size: fs(-1);
+
+  margin-top: 3.5vh;
+}
+
+#footer_wrapper > div:nth-child(3) > * {
+  margin-right: 15px;
+
+  color: white;
+  text-decoration: none;
+}
+
+#footer_wrapper > div:nth-child(3) > div:last-child {
+  margin: 0;
+}
+
+#footer_wrapper > div:nth-child(3) > div:nth-child(2),
+#footer_wrapper > div:nth-child(3) > div:nth-child(4),
+#footer_wrapper > div:nth-child(3) > div:nth-child(6) {
+  width: 1px;
+  height: fs(-1);
+
+  background-color: white;
+}

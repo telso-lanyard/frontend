@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  // border: 1px solid black;
+  // font-family: 'Give You Glory', cursive;
+  font-family: "Agrandir", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  // outline: none;
+}
+
+:root {
+  @for $i from -10 through 10 {
+    --fs-#{$i}: #{fs($i)};
+  }
+}
+
+html {
+  font-size: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+body {
+  font-size: fs(0);
+  /* line-height: 1.6; */
+}
+
+img,
+svg,
+input,
+video,
+textarea {
+  width: 100%;
+  height: 100%;
+
+  outline: none;
+  border: none;
+  border-radius: inherit;
+
+  font-size: fs(0);
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-WideBlackItalic.woff2")
+    format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-GrandHeavy.woff2")
+    format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandirText-Bold.woff2")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-TightRegular.woff2")
+    format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-NarrowRegular.woff2")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-Regular.woff2")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-WideLight.woff2")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-GrandLight.woff2")
+    format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-ThinItalic.woff2")
+    format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}

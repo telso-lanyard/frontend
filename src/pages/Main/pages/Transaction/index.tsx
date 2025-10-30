@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import "./style.css";
+import "./style.scss";
 import Nav from "../../../../components/Nav";
 import Footer from "../../../../components/Footer";
 import style_map from "../../../../utils/style_map";
@@ -74,7 +74,7 @@ function Transaction() {
               toast.success(
                 <div
                   style={{
-                    fontSize: "var(--fs-sm)",
+                    fontSize: "var(--fs--1)",
                     padding: "3.75px 15px",
                   }}
                 >

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-import "./style.css";
+import "./style.scss";
 import * as icons from "../../../../assets";
 import Input from "../../../../components/Input";
 import Request from "../../../../utils/requests";
@@ -30,7 +30,7 @@ function Auth({ ...props }) {
         toast.success(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >
@@ -45,7 +45,7 @@ function Auth({ ...props }) {
         toast.error(
           <div
             style={{
-              fontSize: "var(--fs-sm)",
+              fontSize: "var(--fs--1)",
               padding: "3.75px 15px",
             }}
           >

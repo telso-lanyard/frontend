@@ -7,7 +7,7 @@ function Lanyard({ ...props }) {
   const [type, setType] = useState<"progression" | "elevation">();
 
   return props.pageWidth < 1200 ? (
-    <Mobile type={type} setType={setType} />
+    <Mobile type={type} setType={setType} pageWidth={props.pageWidth} />
   ) : (
     <Desktop type={type} setType={setType} />
   );
