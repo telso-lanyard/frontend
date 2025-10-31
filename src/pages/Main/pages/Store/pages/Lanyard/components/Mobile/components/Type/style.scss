@@ -29,7 +29,8 @@
 }
 
 #store_lanyard_mobile_type_wrapper > div:nth-child(2) {
-  width: clamp(250px, 100%, 500px);
+  // width: clamp(250px, 100%, 500px);
+  width: 100%;
   height: fit-content;
 
   margin-top: 30px;
@@ -50,7 +51,7 @@
   border: 2px solid #b3b3b3;
 
   font-size: fs(-1);
-  padding: 5px 0;
+  padding: 7.5px 0;
 
   cursor: pointer;
   text-align: center;

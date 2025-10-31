@@ -17,14 +17,19 @@ function Carousel({ ...props }) {
     const tl = gsap.timeline();
     tl.to(el, { opacity: 0.95, duration: 0.2 })
       .call(() => {
-        el.src = assets[`lanyard_store_bg_2_${state}` as keyof typeof assets];
+        el.src =
+          assets[
+            `lanyard_store_bg_${
+              props.type || "elevation"
+            }_2_${state}` as keyof typeof assets
+          ];
       })
       .to(el, { opacity: 1, duration: 0.1, ease: "expo.out" });
 
     return () => {
       tl.kill();
     };
-  }, [state]);
+  }, [state, props.type]);
 
   useEffect(() => {
     if (!arrowElLeft || !arrowElRight) return;
@@ -55,7 +60,11 @@ function Carousel({ ...props }) {
 
   return (
     <div id="store_lanyard_mobile_carousel_wrapper">
-      <div>Forward, with purpose.</div>
+      <div>
+        {props.type == "progression"
+          ? "Beyond form."
+          : "Forward, with purpose."}
+      </div>
       <div>
         <div>
           <img ref={imageEl} alt="" />
