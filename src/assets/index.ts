@@ -38,8 +38,12 @@ export { default as lanyard_store_bg_progression_2_4 } from "./images/lanyard-st
 export { default as lanyard_store_bg_wide } from "./images/lanyard-store-bg-wide.png";
 export { default as lanyard_store_bg_elevation } from "./images/lanyard-store-bg-elevation.png";
 export { default as lanyard_store_bg_progression } from "./images/lanyard-store-bg-progression.png";
+export { default as lanyard_store_bg_elevation_wide } from "./images/lanyard-store-bg-elevation-wide.png";
+export { default as lanyard_store_bg_progression_wide } from "./images/lanyard-store-bg-progression-wide.png";
 export { default as lanyard_store_lanyards_elevation } from "./images/lanyard-store-lanyards-elevation.svg";
 export { default as lanyard_store_lanyards_progression } from "./images/lanyard-store-lanyards-progression.svg";
+export { default as lanyard_store_lanyards_elevation_wide } from "./images/lanyard-store-lanyards-elevation-wide.png";
+export { default as lanyard_store_lanyards_progression_wide } from "./images/lanyard-store-lanyards-progression-wide.png";
 
 export { default as lanyard_store_lanyards_elevation_00186B } from "./images/lanyard-store-lanyards-elevation-00186B.svg";
 export { default as lanyard_store_lanyards_elevation_75147C } from "./images/lanyard-store-lanyards-elevation-75147C.svg";

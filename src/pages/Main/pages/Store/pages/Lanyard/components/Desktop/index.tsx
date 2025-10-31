@@ -45,8 +45,8 @@ function Desktop({ ...props }) {
       .call(() => {
         if (props.type) {
           props.type == "elevation"
-            ? (el.src = assets.lanyard_store_bg_elevation)
-            : (el.src = assets.lanyard_store_bg_progression);
+            ? (el.src = assets.lanyard_store_bg_elevation_wide)
+            : (el.src = assets.lanyard_store_bg_progression_wide);
         }
       })
       .to(el, { opacity: 1, duration: 0.3, ease: "expo.out" });

@@ -7,17 +7,20 @@ function Type({ ...props }) {
       id="store_lanyard_desktop_type_wrapper"
       style={style_map.flex(["center", "center", "column"])}
     >
-      {["progression", "elevation"].map((type, i) => (
-        <div
-          key={i}
-          onClick={() => props.setType(type)}
-          style={{
-            border: `${props.type == type ? 2 : 1}px solid #b3b3b3`,
-          }}
-        >
-          {type.charAt(0).toUpperCase() + type.slice(1)}
-        </div>
-      ))}
+      <div>Choose your journey.</div>
+      <div>
+        {["progression", "elevation"].map((type, i) => (
+          <div
+            key={i}
+            onClick={() => props.setType(type)}
+            style={{
+              border: `${props.type == type ? 2 : 1}px solid #b3b3b3`,
+            }}
+          >
+            {type.charAt(0).toUpperCase() + type.slice(1)}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

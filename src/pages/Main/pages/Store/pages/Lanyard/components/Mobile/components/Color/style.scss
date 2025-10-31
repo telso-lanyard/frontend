@@ -2,6 +2,7 @@
   width: 100%;
   height: fit-content;
 
+  margin-bottom: 70px;
   @include flex(flex-start, flex-start, column);
 }
 
@@ -37,7 +38,7 @@
 #store_lanyard_mobile_color_wrapper > div:nth-child(3) > div:nth-child(1) {
   font-size: fs(0.5);
   font-weight: $fw-semi-bold;
-  margin-bottom: 10px;
+  margin-bottom: 7.5px;
 }
 
 #store_lanyard_mobile_color_wrapper > div:nth-child(3) > div:nth-child(2) {
