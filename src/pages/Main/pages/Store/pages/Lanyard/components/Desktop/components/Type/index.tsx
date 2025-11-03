@@ -3,10 +3,7 @@ import style_map from "../../../../../../../../../../utils/style_map";
 
 function Type({ ...props }) {
   return (
-    <div
-      id="store_lanyard_desktop_type_wrapper"
-      style={style_map.flex(["center", "center", "column"])}
-    >
+    <div id="store_lanyard_desktop_type_wrapper">
       <div>Choose your journey.</div>
       <div>
         {["progression", "elevation"].map((type, i) => (

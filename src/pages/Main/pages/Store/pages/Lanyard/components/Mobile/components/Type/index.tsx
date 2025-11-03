@@ -4,6 +4,10 @@ import { useRef, useEffect } from "react";
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
 import style_map from "../../../../../../../../../../utils/style_map";
+import {
+  price,
+  priceFormatters,
+} from "../../../../../../../../../../utils/data";
 
 function Type({ ...props }) {
   const imageEl = useRef<HTMLImageElement>(null);
@@ -36,7 +40,7 @@ function Type({ ...props }) {
       <div style={style_map.flex(["flex-start", "flex-start", "column"])}>
         <div>New</div>
         <div>Buy THE LANYARD</div>
-        <div>From ₦7499</div>
+        <div>From {priceFormatters.naira.format(price)}</div>
       </div>
       <div style={style_map.flex(["center", "center"])}>
         <img ref={imageEl} src={assets.lanyard_store_bg} alt="" />

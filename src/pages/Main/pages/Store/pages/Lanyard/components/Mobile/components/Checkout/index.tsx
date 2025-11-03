@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
+import {
+  price,
+  priceFormatters,
+} from "../../../../../../../../../../utils/data";
+import { colors } from "../../../../../../../../../../utils/data";
 
 function Checkout({ ...props }) {
   return (
@@ -25,8 +30,13 @@ function Checkout({ ...props }) {
         </div>
       </div>
       <div>
-        <div>THE LANYARD Elevation Pink</div>
-        <div>₦7,499.00</div>
+        <div>
+          THE LANYARD {props.type}{" "}
+          {Object.keys(colors).find(
+            (k) => colors[k as keyof typeof colors] === props.color
+          )}
+        </div>
+        <div>{priceFormatters.naira.format(price)}</div>
         <div>Add to Bag</div>
         <Link to="checkout">Checkout</Link>
       </div>

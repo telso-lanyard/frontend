@@ -38,9 +38,14 @@ function Color({ ...props }) {
         <img ref={imageEl} alt="" />
       </div>
       <div>
-        <div>Color - Black</div>
         <div>
-          {colors.map((color, i) => (
+          Color -{" "}
+          {Object.keys(colors).find(
+            (k) => colors[k as keyof typeof colors] === props.color
+          )}
+        </div>
+        <div>
+          {Object.values(colors).map((color, i) => (
             <div
               key={i}
               style={{
