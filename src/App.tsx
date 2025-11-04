@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { Routes, Route } from "react-router-dom";
 
 // @ts-ignore
-import '@fontsource/give-you-glory';
+import "@fontsource/give-you-glory";
 
 import Main from "./pages/Main";
 import Admin from "./pages/Admin";
@@ -28,7 +28,16 @@ function App() {
         <Route index path="/*" element={<Main pageWidth={pageWidth} />} />
         <Route path="admin/*" element={<Admin pageWidth={pageWidth} />} />
       </Routes>
-      <ToastContainer draggable />
+      <ToastContainer
+        draggable
+        hideProgressBar={true}
+        closeOnClick={true}
+        autoClose={3000}
+        toastStyle={{
+          fontSize: "var(--fs--1)",
+          padding: "3.75px 15px",
+        }}
+      />
     </>
   );
 }

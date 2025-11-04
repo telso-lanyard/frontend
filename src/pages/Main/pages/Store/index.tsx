@@ -9,7 +9,16 @@ function Store({ ...props }) {
     <Routes>
       <Route index element={<Navigate to="lanyard" />} />
       <Route path="case" element={<Case />} />
-      <Route path="lanyard" element={<Lanyard pageWidth={props.pageWidth} />} />
+      <Route
+        path="lanyard"
+        element={
+          <Lanyard
+            setCart={props.setCart}
+            setProfile={props.setProfile}
+            pageWidth={props.pageWidth}
+          />
+        }
+      />
       <Route path="/*" element={<NotFound pageWidth={props.pageWidth} />} />
     </Routes>
   );

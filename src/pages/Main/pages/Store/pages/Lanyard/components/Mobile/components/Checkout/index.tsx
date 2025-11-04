@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
@@ -9,6 +10,25 @@ import {
 import { colors } from "../../../../../../../../../../utils/data";
 
 function Checkout({ ...props }) {
+  const navigate = useNavigate();
+
+  function addToCart(route = "/") {
+    if (!props.type && !props.color)
+      return toast.info("Please select a type and color");
+    if (!props.type) return toast.info("Please select a type");
+    if (!props.color) return toast.info("Please select a color");
+
+    props.setCart((prev: (typeof props.cart)[0]) => [
+      ...prev,
+      { type: props.type, color: props.color },
+    ]);
+
+    props.setProfile(true);
+
+    setTimeout(() => {
+      navigate(route);
+    }, 2000);
+  }
   return (
     <div id="store_lanyard_mobile_checkout_wrapper">
       <div>
@@ -37,8 +57,8 @@ function Checkout({ ...props }) {
           )}
         </div>
         <div>{priceFormatters.naira.format(price)}</div>
-        <div>Add to Bag</div>
-        <Link to="checkout">Checkout</Link>
+        <div onClick={() => addToCart("/orders")}>Add to Bag</div>
+        <Link to="/checkout">Checkout</Link>
       </div>
     </div>
   );

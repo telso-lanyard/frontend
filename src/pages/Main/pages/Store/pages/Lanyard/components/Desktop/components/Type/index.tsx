@@ -1,5 +1,4 @@
 import "./style.scss";
-import style_map from "../../../../../../../../../../utils/style_map";
 
 function Type({ ...props }) {
   return (

@@ -13,10 +13,19 @@ function Lanyard({ ...props }) {
       setType={setType}
       color={color}
       setColor={setColor}
+      setCart={props.setCart}
+      setProfile={props.setProfile}
       pageWidth={props.pageWidth}
     />
   ) : (
-    <Desktop type={type} setType={setType} color={color} setColor={setColor} />
+    <Desktop
+      type={type}
+      setType={setType}
+      color={color}
+      setColor={setColor}
+      setCart={props.setCart}
+      setProfile={props.setProfile}
+    />
   );
 }
 

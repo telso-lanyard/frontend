@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./style.css";
@@ -7,30 +7,27 @@ import * as assets from "../../assets";
 import style_map from "../../utils/style_map";
 
 function Nav({ ...props }) {
+  const navRef = useRef<HTMLDivElement>(null);
   const [scrollTop, setScrollTop] = useState(0);
 
-useEffect(() => {
-  if (!props.loaded) return;
+  useEffect(() => {
+    if (!props.loaded) return;
+    if (props.profile) return;
+    if (!navRef.current) return console.warn("#nav_wrapper ref not set");
 
-  const el = document.querySelector("#nav_wrapper");
-  console.log("Nav element:", el);
+    const tl = gsap.timeline();
 
-  if (!el) {
-    console.warn("❌ #nav_wrapper not found when loaded triggered");
-    return;
-  }
+    tl.to(navRef.current, {
+      y: 0,
+      ease: "expo.inOut",
+      duration: 0.75,
+      delay: 0.1,
+    });
 
-  const tl = gsap.timeline();
-  tl.to(el, {
-    y: 0,
-    ease: "expo.inOut",
-    duration: 0.75,
-    delay: 0.1,
-  });
-
-  return () =>{ tl.kill();}
-}, [props.loaded]);
-
+    return () => {
+      tl.kill();
+    };
+  }, [props.loaded]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,25 +42,43 @@ useEffect(() => {
     };
   }, []);
 
+  useEffect(() => {
+    document.querySelectorAll("nav_wrapper").forEach((el) => {
+      const burger = el.children[0];
+      if (props.profile) {
+        gsap.delayedCall(0.15, () => burger.classList.add("close_burger"));
+      } else {
+        burger.classList.remove("close_burger");
+      }
+    });
+  }, [props.profile]);
+
   return (
     <div
-      id="nav_wrapper"
+      className="nav_wrapper"
+      ref={navRef}
       style={{
         ...style_map.flex(["center", "space-between"]),
-        background: scrollTop > 10 ? "transparent" : "white",
+        background:
+          props.style?.background ?? (scrollTop > 10 ? "transparent" : "white"),
         backdropFilter: scrollTop > 10 ? "blur(10px)" : "none",
+        ...props.style,
       }}
     >
-      <div style={style_map.flex(["center", "space-between", "column"])}>
+      <div
+        onClick={() => props.setProfile(!props.profile)}
+        style={style_map.flex(["center", "space-between", "column"])}
+        className={props.profile ? "close_burger" : ""}
+      >
         <div />
         <div />
       </div>
       <Link to="/" style={style_map.flex(["center", "center"])}>
         <img src={assets.logo_red} alt="" />
       </Link>
-      <div style={style_map.flex(["center", "center"])}>
+      <Link to="/orders" style={style_map.flex(["center", "center"])}>
         <img src={assets.bag} alt="" />
-      </div>
+      </Link>
     </div>
   );
 }

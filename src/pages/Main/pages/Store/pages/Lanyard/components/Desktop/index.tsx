@@ -39,7 +39,7 @@ function Desktop({ ...props }) {
     const tl = gsap.timeline();
 
     if (!inColorSection) {
-      tl.to(el, { opacity: 0.95, duration: 0.2 })
+      tl.to(el, { opacity: 0.85, duration: 0.2 })
         .call(() => {
           el.src = assets.lanyard_store_bg_wide;
           if (props.type) {
@@ -51,7 +51,7 @@ function Desktop({ ...props }) {
         })
         .to(el, { opacity: 1, duration: 0.3, ease: "expo.out" });
     } else {
-      tl.to(el, { opacity: 0.95, duration: 0.2 })
+      tl.to(el, { opacity: 0.85, duration: 0.2 })
         .call(() => {
           el.src = assets.lanyard_store_lanyards_elevation_wide;
           if (props.type) {
@@ -85,7 +85,12 @@ function Desktop({ ...props }) {
           <Color color={props.color} setColor={props.setColor} />
         </div>
       </div>
-      <Checkout type={props.type} color={props.color} />
+      <Checkout
+        type={props.type}
+        color={props.color}
+        setCart={props.setCart}
+        setProfile={props.setProfile}
+      />
     </div>
   );
 }

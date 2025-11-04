@@ -10,7 +10,12 @@ function Mobile({ ...props }) {
       <Type type={props.type} setType={props.setType} />
       <Carousel type={props.type} pageWidth={props.pageWidth} />
       <Color type={props.type} color={props.color} setColor={props.setColor} />
-      <Checkout type={props.type} color={props.color} />
+      <Checkout
+        type={props.type}
+        color={props.color}
+        setCart={props.setCart}
+        setProfile={props.setProfile}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-#nav_wrapper {
+.nav_wrapper {
   width: 100%;
   height: fit-content;
 
@@ -7,36 +7,46 @@
   bottom: 0;
 
   padding: 10px 20px;
-  border-top: .5px solid black;
-  
-  transform: translateY(100%);
+  border-top: 0.5px solid black;
+
   transition: all 300ms;
+  transform: translateY(100%);
 
   z-index: 10;
 }
 
-#nav_wrapper > * {
+.nav_wrapper > * {
   width: 25px;
   height: 35px;
 }
 
-#nav_wrapper > *:nth-child(1),
-#nav_wrapper > *:nth-child(3) {
+.nav_wrapper > *:nth-child(1),
+.nav_wrapper > *:nth-child(3) {
   cursor: pointer;
 }
 
-#nav_wrapper > *:nth-child(1) {
+.nav_wrapper > *:nth-child(1) {
   height: 15px;
 }
 
-#nav_wrapper > *:nth-child(1) > * {
+.nav_wrapper > *:nth-child(1) > * {
   width: 100%;
   height: 3px;
 
   border-radius: 10px;
+  transition: all 300ms ease;
+  transform-origin: center;
   background-color: black;
 }
 
-#nav_wrapper > *:nth-child(2) {
-    width: auto;
+.nav_wrapper > *:nth-child(2) {
+  width: auto;
+}
+
+.close_burger > div:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.close_burger > div:nth-child(2) {
+  transform: translateY(-6px) rotate(-45deg);
 }
