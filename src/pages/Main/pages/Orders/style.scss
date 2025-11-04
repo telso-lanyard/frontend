@@ -1,0 +1,52 @@
+#orders_wrapper {
+  width: 100%;
+  height: fit-content;
+
+  padding: 50px 20px 100px 20px;
+  @include flex(center, flex-start, column);
+}
+
+#orders_wrapper > * {
+  width: 100%;
+  text-align: center;
+}
+
+#orders_wrapper > *:nth-child(1) {
+  font-size: fs(3);
+  font-weight: $fw-bold;
+
+  margin-bottom: 10px;
+}
+
+#orders_wrapper > *:nth-child(2) {
+  font-weight: $fw-light;
+  margin-bottom: 40px;
+}
+
+#orders_wrapper > *:nth-child(3) {
+  max-width: 450px;
+  font-size: fs(-1);
+
+  padding: 10px 0;
+  color: $white;
+  background-color: $secondary;
+
+  text-decoration: none;
+  border-radius: 7.5px;
+  margin-bottom: 80px;
+}
+
+#orders_wrapper > *:nth-child(4) {
+  height: 1px;
+  max-width: 1000px;
+
+  opacity: 0.3;
+  background-color: #000;
+
+  border-radius: 1px;
+  margin-bottom: 60px;
+}
+
+#orders_wrapper > *:nth-child(5) {
+    
+}

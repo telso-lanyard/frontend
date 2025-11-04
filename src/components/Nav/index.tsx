@@ -54,7 +54,7 @@ function Nav({ ...props }) {
   }, [props.profile]);
 
   return (
-    <div
+    <nav
       className="nav_wrapper"
       ref={navRef}
       style={{
@@ -79,7 +79,7 @@ function Nav({ ...props }) {
       <Link to="/orders" style={style_map.flex(["center", "center"])}>
         <img src={assets.bag} alt="" />
       </Link>
-    </div>
+    </nav>
   );
 }
 

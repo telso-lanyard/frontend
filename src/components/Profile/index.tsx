@@ -36,7 +36,10 @@ function Profile({ ...props }) {
         <div>
           <div>
             {props.cart.map(
-              (el: { type: string; color: string }, i: number) => (
+              (
+                el: { type: string; color: string; count: number },
+                i: number
+              ) => (
                 <div key={i}>
                   <div>
                     <img
@@ -61,7 +64,7 @@ function Profile({ ...props }) {
               )
             )}
           </div>
-          <div>Review Bag</div>
+          <Link to="/orders">Review Bag</Link>
         </div>
         <div>
           <div>My Profile</div>

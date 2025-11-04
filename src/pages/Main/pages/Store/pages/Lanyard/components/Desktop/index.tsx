@@ -90,6 +90,7 @@ function Desktop({ ...props }) {
         color={props.color}
         setCart={props.setCart}
         setProfile={props.setProfile}
+        addToCart={props.addToCart}
       />
     </div>
   );
