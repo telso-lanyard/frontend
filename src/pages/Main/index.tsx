@@ -2,21 +2,20 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Story from "./pages/Story";
 import Store from "./pages/Store";
 import Orders from "./pages/Orders";
 import Contact from "./pages/Contact";
 import Discover from "./pages/Discover";
 import Checkout from "./pages/Checkout";
+import { price } from "../../utils/data";
 import NotFound from "../../components/404";
-import Transaction from "./pages/Transaction";
 import Profile from "../../components/Profile";
 
 function Main({ ...props }) {
   const { pathname } = useLocation();
   const [profile, setProfile] = useState(false);
   const [loaded, setLoaded] = useState<boolean>(true);
+  const [total, setTotal] = useState<number>(0);
   const [cart, setCart] = useState<
     { type: string; color: string; count: number }[]
   >(() => {
@@ -64,6 +63,13 @@ function Main({ ...props }) {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    setTotal(
+      cart.reduce(
+        (acc: number, el: (typeof cart)[0]) => acc + el.count * price,
+        0
+      )
+    );
   }, [cart]);
 
   return (
@@ -81,8 +87,6 @@ function Main({ ...props }) {
             />
           }
         />
-        <Route path="about" element={<About />} />
-        <Route path="story" element={<Story pageWidth={props.pageWidth} />} />
         <Route
           path="store/*"
           element={
@@ -97,13 +101,20 @@ function Main({ ...props }) {
         <Route path="discover/*" element={<Discover />} />
         <Route
           path="orders/*"
-          element={<Orders cart={cart} setCart={setCart} />}
+          element={<Orders cart={cart} setCart={setCart} total={total} />}
         />
-        <Route path="checkout/*" element={<Checkout cart={cart} />} />
-        <Route path="transaction/*" element={<Transaction />} />
+        <Route
+          path="checkout/*"
+          element={<Checkout cart={cart} total={total} />}
+        />
         <Route path="/*" element={<NotFound pageWidth={props.pageWidth} />} />
       </Routes>
-      <Profile cart={cart} profile={profile} setProfile={setProfile} />
+      <Profile
+        cart={cart}
+        total={total}
+        profile={profile}
+        setProfile={setProfile}
+      />
     </>
   );
 }

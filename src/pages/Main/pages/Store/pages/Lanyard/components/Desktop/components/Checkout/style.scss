@@ -70,7 +70,6 @@
 #store_lanyard_desktop_checkout_wrapper > * > *:nth-child(2) > *:nth-child(1) {
   font-size: fs(1);
   font-weight: $fw-bold;
-  font-feature-settings: "salt" 1;
 
   margin-bottom: 5px;
 }
@@ -98,7 +97,6 @@
 #store_lanyard_desktop_checkout_wrapper > * > *:nth-child(2) > *:nth-child(5) {
   font-size: fs(-2.25);
   font-weight: $fw-light;
-  font-feature-settings: "salt" 1;
 
   margin-bottom: 40px;
 }

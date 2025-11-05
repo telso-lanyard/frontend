@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
-import {
-  price,
-  priceFormatters,
-} from "../../../../../../../../../../utils/data";
+import { priceFormatters } from "../../../../../../../../../../utils/data";
 import { colors } from "../../../../../../../../../../utils/data";
 
 function Checkout({ ...props }) {
@@ -36,7 +33,7 @@ function Checkout({ ...props }) {
             (k) => colors[k as keyof typeof colors] === props.color
           )}
         </div>
-        <div>{priceFormatters.naira.format(price)}</div>
+        <div>{priceFormatters.naira.format(props.total)}</div>
         <div onClick={() => props.addToCart({ route: "/orders" })}>
           Add to Bag
         </div>

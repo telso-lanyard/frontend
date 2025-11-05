@@ -3,6 +3,7 @@ import "./style.scss";
 function Input({ ...props }) {
   return (
     <input
+      id={props.id}
       name={props.name}
       list={props.list}
       style={props.style}

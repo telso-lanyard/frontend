@@ -3,9 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 
-  // border: 1px solid white;
+  // border: 1px solid black;
   // font-family: 'Give You Glory', cursive;
   font-family: "Agrandir", sans-serif;
+  font-feature-settings: "salt" 1;
   -webkit-tap-highlight-color: transparent;
   // outline: none;
 }
