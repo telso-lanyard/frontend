@@ -4,9 +4,10 @@
 
   position: fixed;
   left: 0;
-  bottom: 0;
+  top: 0;
 
   z-index: 3;
+  overflow-y: auto;
 }
 
 #orders_delivery_options_wrapper > div {
@@ -15,7 +16,7 @@
 
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
 
   background-color: rgba(174, 174, 178, 0.5);
 }
@@ -27,7 +28,7 @@
 
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 10%;
 
   background-color: white;
   transform: translateY(100%);
@@ -102,7 +103,7 @@
   cursor: pointer;
   @include flex(center, flex-start);
 
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 #orders_delivery_options_wrapper > section > label > input {
@@ -118,6 +119,22 @@
 #orders_delivery_options_wrapper > section > label > p {
   font-size: fs(-1.5);
   font-weight: $fw-light;
+}
+
+#orders_delivery_options_wrapper > section > section {
+  width: 100%;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #919191;
+  margin-bottom: 15px;
+}
+
+#orders_delivery_options_wrapper > section > section p {
+  font-size: fs(-1.25);
+}
+
+#orders_delivery_options_wrapper > section > section p:nth-of-type(2),
+#orders_delivery_options_wrapper > section > section p:nth-of-type(3) {
+  color: #919191;
 }
 
 #orders_delivery_options_wrapper > section > p:nth-of-type(2),

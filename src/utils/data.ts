@@ -17,3 +17,16 @@ export const priceFormatters = {
     minimumFractionDigits: 2,
   }),
 };
+
+export const deliveryDate = (days: number) => {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  };
+
+  return date.toLocaleDateString("en-US", options);
+};

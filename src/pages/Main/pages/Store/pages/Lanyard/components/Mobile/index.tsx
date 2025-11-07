@@ -88,14 +88,20 @@ function Mobile({ ...props }) {
           color={props.color}
           options={options}
           setOptions={setOptions}
+          location={props.location}
+          setLocation={props.setLocation}
         />
       )}
       {options == "availability" && (
         <CheckAvailability
           type={props.type}
+          setType={props.setType}
           color={props.color}
+          setColor={props.setColor}
           options={options}
           setOptions={setOptions}
+          location={props.location}
+          setLocation={props.setLocation}
         />
       )}
     </>

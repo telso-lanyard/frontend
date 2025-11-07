@@ -16,6 +16,10 @@ function Main({ ...props }) {
   const [profile, setProfile] = useState(false);
   const [loaded, setLoaded] = useState<boolean>(true);
   const [total, setTotal] = useState<number>(0);
+  const [location, setLocation] = useState<string>(() => {
+    const saved = localStorage.getItem("location");
+    return saved ? JSON.parse(saved) : "";
+  });
   const [cart, setCart] = useState<
     { type: string; color: string; count: number }[]
   >(() => {
@@ -92,6 +96,8 @@ function Main({ ...props }) {
           element={
             <Store
               setCart={setCart}
+              location={location}
+              setLocation={setLocation}
               setProfile={setProfile}
               pageWidth={props.pageWidth}
             />
@@ -105,7 +111,14 @@ function Main({ ...props }) {
         />
         <Route
           path="checkout/*"
-          element={<Checkout cart={cart} total={total} />}
+          element={
+            <Checkout
+              cart={cart}
+              total={total}
+              location={location}
+              setLocation={setLocation}
+            />
+          }
         />
         <Route path="/*" element={<NotFound pageWidth={props.pageWidth} />} />
       </Routes>

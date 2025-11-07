@@ -51,6 +51,8 @@ function Lanyard({ ...props }) {
       setColor={setColor}
       setCart={props.setCart}
       setProfile={props.setProfile}
+      location={props.location}
+      setLocation={props.setLocation}
       pageWidth={props.pageWidth}
       addToCart={addToCart}
     />
@@ -62,6 +64,8 @@ function Lanyard({ ...props }) {
       setColor={setColor}
       setCart={props.setCart}
       setProfile={props.setProfile}
+      location={props.location}
+      setLocation={props.setLocation}
       addToCart={addToCart}
     />
   );

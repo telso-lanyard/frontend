@@ -15,6 +15,8 @@ function Store({ ...props }) {
           <Lanyard
             setCart={props.setCart}
             setProfile={props.setProfile}
+            location={props.location}
+            setLocation={props.setLocation}
             pageWidth={props.pageWidth}
           />
         }
