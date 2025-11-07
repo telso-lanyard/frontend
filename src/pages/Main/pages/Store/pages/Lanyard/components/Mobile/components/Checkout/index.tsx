@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
-import { priceFormatters } from "../../../../../../../../../../utils/data";
+import {
+  price,
+  priceFormatters,
+} from "../../../../../../../../../../utils/data";
 import { colors } from "../../../../../../../../../../utils/data";
 
 function Checkout({ ...props }) {
@@ -28,12 +31,14 @@ function Checkout({ ...props }) {
       </div>
       <div>
         <div>
-          THE LANYARD {props.type}{" "}
+          THE LANYARD{" "}
+          {props.type &&
+            props.type.charAt(0).toUpperCase() + props.type.slice(1)}{" "}
           {Object.keys(colors).find(
             (k) => colors[k as keyof typeof colors] === props.color
           )}
         </div>
-        <div>{priceFormatters.naira.format(props.total)}</div>
+        <div>{priceFormatters.naira.format(price)}</div>
         <div onClick={() => props.addToCart({ route: "/orders" })}>
           Add to Bag
         </div>

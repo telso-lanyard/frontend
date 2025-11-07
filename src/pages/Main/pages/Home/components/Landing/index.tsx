@@ -27,11 +27,15 @@ function Landing({ ...props }) {
     });
 
     tl.to(paths, {
-      strokeDashoffset: 0,
-      duration: 0.5,
-      ease: "power1.inOut",
-      stagger: 0.1,
+      opacity: 1,
     })
+      .to(paths, {
+        strokeDashoffset: 0,
+        duration: 0.5,
+        ease: "power1.inOut",
+        stagger: 0.1,
+        delay: 0.1,
+      })
       .to("#home_landing_wrapper > div:nth-child(2) > div:nth-child(1)", {
         transform: "translateY(0)",
         opacity: 1,

@@ -9,6 +9,7 @@ import { price, priceFormatters } from "../../../../utils/data";
 
 function Orders({ ...props }) {
   const navigate = useNavigate();
+
   const [countState, setCountState] = useState<boolean[]>(
     Array(props.cart.length).fill(false)
   );

@@ -73,6 +73,15 @@ textarea {
 
 @font-face {
   font-family: "Agrandir";
+  src: url("./assets//fonts/Agrandir/PPAgrandir-WideBold.woff2")
+    format("opentype");
+  font-weight: 750;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir";
   src: url("./assets//fonts/Agrandir/PPAgrandirText-Bold.woff2")
     format("opentype");
   font-weight: 700;
@@ -127,8 +136,7 @@ textarea {
 
 @font-face {
   font-family: "Agrandir";
-  src: url("./assets//fonts/Agrandir/PPAgrandir-ThinItalic.woff2")
-    format("opentype");
+  src: url("./assets//fonts/Agrandir/PPAgrandir-Thin.woff2") format("opentype");
   font-weight: 100;
   font-style: normal;
   font-display: swap;

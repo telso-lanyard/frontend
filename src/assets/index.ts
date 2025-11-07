@@ -10,6 +10,7 @@ export { default as logout } from "./icons/logout.svg";
 export { default as eye_off } from "./icons/eye_off.svg";
 export { default as calc_white } from "./icons/calc_white.svg";
 export { default as arrow_down } from "./icons/arrow_down.svg";
+export { default as arrow_down_red } from "./icons/arrow_down_red.svg";
 export { default as arrow_down_grey } from "./icons/arrow_down_grey.svg";
 export { default as arrow_down_black } from "./icons/arrow_down_black.svg";
 export { default as desc_white } from "./icons/desc_white.svg";
@@ -20,6 +21,7 @@ export { default as add_to_cart_white } from "./icons/add_to_cart_white.svg";
 export { default as bag } from "./icons/bag.svg";
 export { default as bookmark } from "./icons/bookmark.svg";
 export { default as truck } from "./icons/truck.svg";
+export { default as circle_plus } from "./icons/circle_plus.svg";
 
 export { default as hero_bg } from "./images/hero-bg.png";
 export { default as landing_img } from "./images/landing-img.png";

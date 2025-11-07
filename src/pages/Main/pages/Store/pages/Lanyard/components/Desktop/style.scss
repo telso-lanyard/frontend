@@ -2,7 +2,7 @@
   width: 100%;
   height: fit-content;
 
-  padding: clamp(20px, 10%, 60px) 20px 0 20px;
+  padding: clamp(20px, 10%, 60px) 20px 125px 20px;
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) {
@@ -54,4 +54,68 @@
   height: 100%;
 
   flex: 1;
+}
+
+.delivery-options > article {
+  @include flex(flex-start, flex-start);
+}
+
+.delivery-options > article:nth-child(1) {
+  margin-bottom: 40px;
+}
+
+.delivery-options > article > img {
+  width: 50px;
+  height: 50px;
+
+  margin-right: 20px;
+}
+
+.delivery-options > article:nth-child(2) > img {
+  height: 40px;
+}
+
+.delivery-options > article > div {
+  text-align: left;
+  font-size: fs(-1);
+
+  @include flex(flex-start, flex-start, column);
+}
+
+.delivery-options > article > div > p > strong {
+  font-size: fs(-0.5);
+}
+
+.delivery-options > article > div > button {
+  font-size: fs(-1);
+  color: $secondary;
+
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  @include flex(center, flex-start);
+}
+
+@media (min-width: 800px) {
+  .delivery-options > article > div br {
+    display: none;
+  }
+
+  .delivery-options > article > div strong {
+    margin-right: 7.5px;
+  }
+
+  .delivery-options > article > div span {
+    margin-right: 10px;
+  }
+
+  .delivery-options > article > div > button {
+    margin-top: 2.5px;
+  }
+}
+
+.delivery-options > article > div > button > img {
+  width: 15px;
+  aspect-ratio: 1/1;
+  margin-left: 6.5px;
 }

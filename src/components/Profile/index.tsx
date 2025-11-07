@@ -64,7 +64,12 @@ function Profile({ ...props }) {
               )
             )}
           </div>
-          <Link to="/orders">Review Bag</Link>
+          <Link
+            to="/orders"
+            style={{ display: props.cart.length > 0 ? "block" : "none" }}
+          >
+            Review Bag
+          </Link>
         </div>
         <div>
           <div>My Profile</div>

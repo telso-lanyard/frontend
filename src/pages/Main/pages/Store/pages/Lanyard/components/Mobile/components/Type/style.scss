@@ -46,11 +46,12 @@
 #store_lanyard_mobile_type_wrapper > div:nth-child(3) > div {
   width: 48.75%;
 
+  padding: 7.5px 0;
   border-radius: 10px;
   border: 2px solid #b3b3b3;
 
   font-size: fs(-1);
-  padding: 7.5px 0;
+  font-weight: $fw-wide-bold;
 
   cursor: pointer;
   text-align: center;

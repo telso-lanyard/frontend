@@ -32,7 +32,9 @@ function Checkout({ ...props }) {
         </div>
         <div>
           <div>
-            THE LANYARD {props.type}{" "}
+            THE LANYARD{" "}
+            {props.type &&
+              props.type.charAt(0).toUpperCase() + props.type.slice(1)}{" "}
             {Object.keys(colors).find(
               (k) => colors[k as keyof typeof colors] === props.color
             )}

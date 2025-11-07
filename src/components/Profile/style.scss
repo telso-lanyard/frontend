@@ -17,7 +17,7 @@
 
 #profile_wrapper > *:nth-child(1) {
   font-size: fs(2.5);
-  font-weight: $fw-bold;
+  font-weight: $fw-wide-bold;
 
   margin-bottom: 40px;
 }
@@ -62,8 +62,8 @@
 }
 
 #profile_wrapper > *:nth-child(2) > *:nth-child(1) > * > *:nth-child(2) {
-  font-size: fs(0.5);
-  font-weight: $fw-bold;
+  font-size: fs(-0.5);
+  font-weight: $fw-wide-bold;
 }
 
 #profile_wrapper > *:nth-child(2) > *:nth-child(2) {
@@ -76,6 +76,19 @@
   background-color: $secondary;
 
   text-decoration: none;
+}
+
+@media (min-width: 800px) {
+  #profile_wrapper > *:nth-child(2) > *:nth-child(2) {
+    position: absolute;
+    right: 2.5%;
+    top: 0;
+
+    font-size: fs(-0.5);
+    font-weight: $fw-thin;
+    padding: 5px 5%;
+    margin-top: 2.5%;
+  }
 }
 
 #profile_wrapper > *:nth-child(3) {

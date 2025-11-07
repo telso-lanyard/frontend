@@ -17,6 +17,10 @@
   top: 10px;
 }
 
+#home_landing_wrapper > div:nth-child(1) path {
+  opacity: 0;
+}
+
 #home_landing_wrapper > div:nth-child(1) > div:nth-child(1) {
   width: 100%;
 }
@@ -46,6 +50,9 @@
   font-size: fs(4);
   font-weight: $fw-black;
 
+  // font-size: fs(4);
+  // font-weight: 900;
+
   opacity: 0;
   transform: translateY(100%);
 }
@@ -53,6 +60,9 @@
 #home_landing_wrapper > div:nth-child(2) > div:nth-child(2) {
   font-size: fs(0);
   font-weight: $fw-light;
+
+  // font-size: fs(4);
+  // font-weight: 700;
 
   opacity: 0;
   transform: translateY(100%);
@@ -89,7 +99,7 @@
   border: 1px solid white;
   transform: translateY(-50%);
 
-  font-size: fs(-.5);
+  font-size: fs(-0.5);
   font-weight: $fw-light;
 
   opacity: 0;
