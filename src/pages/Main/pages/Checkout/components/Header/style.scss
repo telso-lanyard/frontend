@@ -1,0 +1,20 @@
+#checkout_header_wrapper {
+  width: 100%;
+  height: fit-content;
+
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  @include flex(baseline, space-between);
+}
+
+#checkout_header_wrapper > h1 {
+  font-weight: $fw-medium;
+}
+
+#checkout_header_wrapper > h2 {
+  color: $secondary;
+  font-size: fs(1.75);
+  font-weight: $fw-light;
+}

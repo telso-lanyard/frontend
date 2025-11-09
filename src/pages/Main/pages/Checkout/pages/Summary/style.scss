@@ -1,0 +1,109 @@
+#checkout_summary_wrapper {
+  width: 100%;
+  @include flex(flex-start, flex-start, column);
+}
+
+#checkout_summary_wrapper > h3 {
+  font-size: fs(0.25);
+  font-weight: $fw-normal;
+
+  margin-bottom: 50px;
+}
+
+#checkout_summary_wrapper > section {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#checkout_summary_wrapper > section > div {
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#checkout_summary_wrapper > section > div:last-child {
+  margin-bottom: 0;
+}
+
+#checkout_summary_wrapper > section > div > div:nth-child(1) {
+  margin-bottom: 20px;
+  @include flex(flex-start, flex-start);
+}
+
+#checkout_summary_wrapper > section > div > div:nth-child(1) > img {
+  width: 75px;
+  aspect-ratio: 1/1;
+}
+
+#checkout_summary_wrapper > section > div > div:nth-child(1) > p {
+  width: 50%;
+  font-size: fs(-.5);
+  font-weight: $fw-light;
+}
+
+#checkout_summary_wrapper > section > div > p {
+  font-size: fs(-0.75);
+  font-weight: $fw-medium;
+
+  margin-bottom: 5px;
+}
+
+#checkout_summary_wrapper > section > div > div:nth-of-type(2) {
+  width: 100%;
+  max-width: 500px;
+  padding: 7.5px 12.5px;
+  border-radius: 7.5px;
+  border: 1.5px solid $secondary;
+  @include flex(center, space-between);
+}
+
+#checkout_summary_wrapper
+  > section
+  > div
+  > div:nth-of-type(2)
+  > div:nth-of-type(1) {
+  font-size: fs(-0.75);
+  @include flex(flex-start, flex-start, column);
+}
+
+#checkout_summary_wrapper
+  > section
+  > div
+  > div:nth-of-type(2)
+  > div:nth-of-type(1)
+  > p:nth-of-type(1) {
+  font-weight: $fw-medium;
+}
+
+#checkout_summary_wrapper
+  > section
+  > div
+  > div:nth-of-type(2)
+  > div:nth-of-type(1)
+  > p:nth-of-type(2) {
+  font-size: fs(-2.25);
+  font-weight: $fw-light;
+}
+
+#checkout_summary_wrapper
+  > section
+  > div
+  > div:nth-of-type(2)
+  > p {
+  font-size: fs(-0.5);
+  font-weight: $fw-light;
+}
+
+#checkout_summary_wrapper > *:last-child {
+  width: 80%;
+  padding: 12.5px 0;
+
+  color: $white;
+  font-size: fs(-0.5);
+  align-self: center;
+  text-align: center;
+  border-radius: 7.5px;
+  text-decoration: none;
+  background-color: $secondary;
+}
