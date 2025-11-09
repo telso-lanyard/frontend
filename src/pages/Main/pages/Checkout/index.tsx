@@ -1,4 +1,5 @@
-import { useState } from "react";
+import z from "zod";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./style.scss";
@@ -7,9 +8,27 @@ import Address from "./pages/Address";
 import Payment from "./pages/Payment";
 import Header from "./components/Header";
 import Contact from "./components/Contact";
+import order from "../../../../models/order";
 
 function Checkout({ ...props }) {
-  const [data, setData] = useState({});
+  const [address, setAddress] = useState<z.infer<typeof order>["address"]>(
+    Object.keys(order.shape.address.shape).reduce((acc, key) => {
+      acc[key] = "";
+      return acc;
+    }, {} as any) as z.infer<typeof order>["address"]
+  );
+
+  const [contact, setContact] = useState<z.infer<typeof order>["contact"]>(
+    Object.keys(order.shape.address.shape).reduce((acc, key) => {
+      acc[key] = "";
+      return acc;
+    }, {} as any) as z.infer<typeof order>["contact"]
+  );
+
+  useEffect(() => {
+    console.log(address);
+    console.log(contact);
+  }, [address, contact]);
 
   return (
     <div id="checkout_wrapper">
@@ -19,12 +38,25 @@ function Checkout({ ...props }) {
         <Route path="summary" element={<Summary cart={props.cart} />} />
         <Route
           path="address"
-          element={<Address cart={props.cart} data={data} setData={setData} />}
+          element={
+            <Address
+              cart={props.cart}
+              address={address}
+              setAddress={setAddress}
+              contact={contact}
+              setContact={setContact}
+            />
+          }
         />
         <Route
           path="payment"
           element={
-            <Payment data={data} cart={props.cart} total={props.total} />
+            <Payment
+              cart={props.cart}
+              address={address}
+              contact={contact}
+              total={props.total}
+            />
           }
         />
       </Routes>
