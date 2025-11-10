@@ -1,5 +1,6 @@
+import { toast } from "react-toastify";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./style.scss";
 import order from "../../../../../../models/order";
@@ -7,7 +8,24 @@ import * as assets from "../../../../../../assets";
 import Input from "../../../../../../components/Input";
 
 function Address({ ...props }) {
+  const navigate = useNavigate();
   const [guardianToggle, setGuardianToggle] = useState(false);
+
+  function proceed() {
+    for (const key of Object.keys(props.address)) {
+      if (props.address[key].length <= 2) {
+        return toast.info(`Enter a proper value for ${key}`);
+      }
+    }
+
+    for (const key of Object.keys(props.contact)) {
+      if (key !== "guardian" && props.contact[key].length <= 2) {
+        return toast.info(`Enter a proper value for ${key}`);
+      }
+    }
+
+    navigate("/checkout/payment");
+  }
 
   return (
     <div id="checkout_address_wrapper">
@@ -85,7 +103,7 @@ function Address({ ...props }) {
           </>
         )}
       </section>
-      <Link to="/checkout/payment">Continue to Payment</Link>
+      <button onClick={proceed}>Continue to Payment</button>
     </div>
   );
 }

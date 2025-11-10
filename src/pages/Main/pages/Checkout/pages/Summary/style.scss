@@ -106,3 +106,36 @@
   margin-bottom: 75px;
   background-color: $secondary;
 }
+
+@media (min-width: 800px) {
+  #checkout_summary_wrapper > section {
+    margin-bottom: 80px;
+    @include flex(center, flex-start, column);
+  }
+
+  #checkout_summary_wrapper > section > div {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    @include flex(center, center, column);
+  }
+
+  #checkout_summary_wrapper > section > div > img {
+    width: 125px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  #checkout_summary_wrapper > section > div > p {
+    font-size: fs(-0.25);
+  }
+
+  #checkout_summary_wrapper > p {
+    width: 100%;
+    text-align: center;
+  }
+
+  #checkout_summary_wrapper > div:nth-of-type(1) {
+    align-self: center;
+  }
+}

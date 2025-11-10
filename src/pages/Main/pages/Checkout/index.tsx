@@ -1,5 +1,5 @@
 import z from "zod";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./style.scss";
@@ -19,16 +19,12 @@ function Checkout({ ...props }) {
   );
 
   const [contact, setContact] = useState<z.infer<typeof order>["contact"]>(
-    Object.keys(order.shape.address.shape).reduce((acc, key) => {
+    Object.keys(order.shape.contact.shape).reduce((acc, key) => {
       acc[key] = "";
       return acc;
     }, {} as any) as z.infer<typeof order>["contact"]
   );
 
-  useEffect(() => {
-    console.log(address);
-    console.log(contact);
-  }, [address, contact]);
 
   return (
     <div id="checkout_wrapper">

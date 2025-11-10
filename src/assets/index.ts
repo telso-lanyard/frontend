@@ -24,6 +24,7 @@ export { default as truck } from "./icons/truck.svg";
 export { default as circle_plus } from "./icons/circle_plus.svg";
 
 export { default as hero_bg } from "./images/hero-bg.png";
+export { default as paystack_logo } from "./images/paystack_logo.png";
 export { default as landing_img } from "./images/landing-img.png";
 export { default as about } from "./images/about.jpg";
 export { default as story } from "./images/story.jpg";
