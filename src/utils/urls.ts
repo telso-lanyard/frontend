@@ -1,4 +1,4 @@
-const isLocal = window.location.hostname === "localhost";
+const isLocal = window.location.hostname !== "localhost";
 
 const base = isLocal ? "http://localhost:8080" : "https://telsoglobal.com";
 
