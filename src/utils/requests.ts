@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { type AxiosRequestConfig } from "axios";
+
 import urls from "./urls";
 
 interface RequestOptions {
@@ -9,16 +10,61 @@ interface RequestOptions {
   files?: File[];
 }
 
+const api = axios.create({
+  baseURL: urls.api,
+});
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const message = error?.response?.data?.message;
+
+    if (
+      message === "Access Denied. No token provided." ||
+      message === "Token has expired."
+    ) {
+      error.response.data.message = "Session expired. Please log in again.";
+      sessionStorage.removeItem("token");
+
+      setTimeout(() => {
+        if (window.location.pathname.startsWith("/admin")) {
+          window.location.href = "/admin/auth";
+        } else if (window.location.pathname.startsWith("/demo/admin")) {
+          window.location.href = "/demo/admin/auth";
+        } else if (window.location.pathname.startsWith("/business/admin")) {
+          window.location.href = "/business/admin/auth";
+        }
+      }, 3000);
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 const Request = {
   get: async ({ url_mod = "", query, token }: RequestOptions) => {
     const config: AxiosRequestConfig = {
       params: query,
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     };
-    return axios.get(`${urls.apiURL}${url_mod}`, config);
+    return api.get(url_mod, config);
   },
 
   post: async ({ url_mod = "", query, body, token }: RequestOptions) => {
+    const config: AxiosRequestConfig = {
+      params: query,
+      headers: {
+        ...(body instanceof FormData
+          ? {}
+          : { "Content-Type": "application/json" }),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    };
+
+    return api.post(url_mod, body, config);
+  },
+
+  patch: async ({ url_mod = "", query, body, token }: RequestOptions) => {
     const config: AxiosRequestConfig = {
       params: query,
       headers: {
@@ -26,43 +72,8 @@ const Request = {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     };
-  
-    return axios.post(`${urls.apiURL}${url_mod}`, body, config);
-  },  
 
-  patch: async ({
-    url_mod = "",
-    query,
-    body,
-    token,
-    files,
-  }: RequestOptions) => {
-    const formData = new FormData();
-
-    if (files) {
-      files.forEach((file, _) => {
-        formData.append("media", file);
-      });
-    }
-
-    if (body) {
-      Object.entries(body).forEach(([key, value]) => {
-        if (typeof value === "object") {
-          formData.append(key, JSON.stringify(value));
-        } else {
-          formData.append(key, value as string);
-        }
-      });
-    }
-
-    const config: AxiosRequestConfig = {
-      params: query,
-      headers: {
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      },
-    };
-
-    return axios.patch(`${urls.apiURL}${url_mod}`, formData, config);
+    return api.patch(url_mod, body, config);
   },
 
   delete: async ({ url_mod = "", query, token }: RequestOptions) => {
@@ -70,7 +81,7 @@ const Request = {
       params: query,
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     };
-    return axios.delete(`${urls.apiURL}${url_mod}`, config);
+    return api.delete(url_mod, config);
   },
 };
 

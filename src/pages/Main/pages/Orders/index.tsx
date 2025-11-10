@@ -16,7 +16,7 @@ function Orders({ ...props }) {
 
   useEffect(() => {
     if (props.cart.length <= 0) navigate("/store");
-  }, []);
+  }, [props.cart]);
 
   return (
     <div id="orders_wrapper">

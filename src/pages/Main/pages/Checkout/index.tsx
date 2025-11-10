@@ -1,6 +1,6 @@
 import z from "zod";
-import { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import "./style.scss";
 import Summary from "./pages/Summary";
@@ -11,6 +11,8 @@ import Contact from "./components/Contact";
 import order from "../../../../models/order";
 
 function Checkout({ ...props }) {
+  const navigate = useNavigate();
+
   const [address, setAddress] = useState<z.infer<typeof order>["address"]>(
     Object.keys(order.shape.address.shape).reduce((acc, key) => {
       acc[key] = "";
@@ -25,6 +27,9 @@ function Checkout({ ...props }) {
     }, {} as any) as z.infer<typeof order>["contact"]
   );
 
+  useEffect(() => {
+    if (props.cart.length < 1) navigate("/store");
+  }, [props.cart]);
 
   return (
     <div id="checkout_wrapper">

@@ -1,9 +1,8 @@
-// const baseURL = "http://localhost:8080/";
-const baseURL = "https://telsoglobal.com/";
+const isLocal = window.location.hostname === "localhost";
 
-const urls = {
-    apiURL: baseURL + "api/v1/",
-    media: baseURL + "media/"
-};
+const base = isLocal ? "http://localhost:8080" : "https://telsoglobal.com";
 
-export default urls;
+const api = `${base}/api/v1`;
+const media = `${api}/media`;
+
+export default { base, api, media };
