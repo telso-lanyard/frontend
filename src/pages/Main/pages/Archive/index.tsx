@@ -33,6 +33,7 @@ function Archive({ ...props }) {
 
   useEffect(() => {
     if (latest) setData(latest);
+    console.log(latest);
   }, [latest]);
 
   return (
@@ -55,11 +56,19 @@ function Archive({ ...props }) {
                 <li>sort by:</li>
                 <li
                   style={{
-                    color: sold ? "" : "#D41F27",
+                    color: sold == undefined ? "#D41F27" : "",
                   }}
                   onClick={() => setSold(undefined)}
                 >
-                  all catalogue
+                  all
+                </li>
+                <li
+                  style={{
+                    color: sold === false ? "#D41F27" : "",
+                  }}
+                  onClick={() => setSold(false)}
+                >
+                  catalogue
                 </li>
                 <li
                   style={{
