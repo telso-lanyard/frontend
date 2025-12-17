@@ -18,13 +18,15 @@ function Archive({ ...props }) {
       created_at: string;
     }[]
   >([]);
-  const [overlay, setOverlay] = useState<(typeof data)[0]>();
+  const [overlay, setOverlay] = useState<string>();
+  const [sold, setSold] = useState<boolean | undefined>(undefined);
+  const [type, setType] = useState<string | undefined>(undefined);
 
   const { data: latest } = useQuery<typeof data, Error>({
-    queryKey: ["Posts", "Archive", { limit: 100 }],
+    queryKey: ["Posts", "Archive", { limit: 100, sold, type }],
     queryFn: () =>
       api
-        .get("archive", { params: { limit: 100 } })
+        .get("archive", { params: { limit: 100, sold, type } })
         .then((res) => res.data.documents),
     placeholderData: (previousData) => previousData,
   });
@@ -50,8 +52,35 @@ function Archive({ ...props }) {
                 <h1>THE ARCHIVE</h1>
               </header>
               <ul>
+                <li>sort by:</li>
+                <li
+                  style={{
+                    color: sold ? "" : "#D41F27",
+                  }}
+                  onClick={() => setSold(undefined)}
+                >
+                  all catalogue
+                </li>
+                <li
+                  style={{
+                    color: sold ? "#D41F27" : "",
+                  }}
+                  onClick={() => setSold(true)}
+                >
+                  archived
+                </li>
+              </ul>
+              <ul>
                 {models.map((el, i) => (
-                  <li key={i}>{el}</li>
+                  <li
+                    key={i}
+                    style={{
+                      color: type == el ? "#D41F27" : "",
+                    }}
+                    onClick={() => setType(type == el ? undefined : el)}
+                  >
+                    {el}
+                  </li>
                 ))}
               </ul>
             </nav>
@@ -62,7 +91,7 @@ function Archive({ ...props }) {
                 key={i}
                 src={`${urls.media}/${el.media}`}
                 alt=""
-                onClick={() => setOverlay(el)}
+                onClick={() => setOverlay(el._id)}
               />
             ))}
           </section>

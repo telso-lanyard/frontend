@@ -1,20 +1,51 @@
 import { useRef, useState, useEffect } from "react";
 
 import "./style.scss";
+import api from "../../../../../utils/api";
 import urls from "../../../../../utils/urls";
 import * as assets from "../../../../../assets";
-import { price, priceFormatters } from "../../../../../utils/data";
+import { useQuery } from "@tanstack/react-query";
+import { priceFormatters } from "../../../../../utils/data";
+// import { price, priceFormatters } from "../../../../../utils/data";
 
 function Overlay({ ...props }) {
-  const overlay = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const close_btn = useRef<HTMLButtonElement>(null);
+  const imgcontainerRef = useRef<HTMLDivElement>(null);
   const [overlayPos, setOverlayPos] = useState({ right: 0, top: 0 });
   const [close_btnPos, setClose_btnPos] = useState({ width: 0 });
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+  const [data, setData] = useState<{
+    _id: string;
+    type: string;
+    name: string;
+    media: string[];
+    sold?: boolean;
+    created_at: string;
+  }>({
+    _id: "",
+    type: "",
+    name: "",
+    media: [],
+    sold: undefined,
+    created_at: "",
+  });
+
+  const { data: latest } = useQuery<typeof data, Error>({
+    queryKey: ["Post", "Archive"],
+    queryFn: () =>
+      api.get(`archive/${props.overlay}`).then((res) => res.data.documents[0]),
+    placeholderData: (previousData) => previousData,
+  });
 
   useEffect(() => {
-    if (!overlay.current || !close_btn.current) return;
+    if (latest) setData(latest);
+  }, [latest]);
 
-    const { top, left, width } = overlay.current.getBoundingClientRect();
+  useEffect(() => {
+    if (!overlayRef.current || !close_btn.current) return;
+
+    const { top, left, width } = overlayRef.current.getBoundingClientRect();
     setOverlayPos({ right: left + width, top });
 
     setClose_btnPos({
@@ -32,13 +63,39 @@ function Overlay({ ...props }) {
     };
   }, []);
 
+  useEffect(() => {
+    const container = imgcontainerRef.current;
+    if (!container) return;
+
+    const images = Array.from(container.children);
+    if (!images.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = images.indexOf(entry.target);
+            setActiveImgIndex(index);
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.6,
+      }
+    );
+
+    images.forEach((img) => observer.observe(img));
+    return () => observer.disconnect();
+  }, [data.media]);
+
   return (
     <div id="main_archive_overlay_wrapper">
       <div className="bg" onClick={() => props.setOverlay(undefined)} />
       <button
         style={{
-          left: overlayPos.right - close_btnPos.width - 10,
-          top: overlayPos.top + 5,
+          left: overlayPos.right - close_btnPos.width - 1.5,
+          top: overlayPos.top + 2.5,
         }}
         ref={close_btn}
         className="close_btn"
@@ -46,22 +103,43 @@ function Overlay({ ...props }) {
       >
         <img src={assets.close} alt="" />
       </button>
-      <section ref={overlay}>
-        <h1>{props.overlay.name}</h1>
+      <section ref={overlayRef}>
+        <h1>{data.name}</h1>
+        <div ref={imgcontainerRef}>
+          {data.media.map((el, i) => (
+            <img key={i} src={`${urls.media}/${el}`} alt="" />
+          ))}
+        </div>
         <div>
-          <img src={`${urls.media}/${props.overlay.media}`} alt="" />
+          {data.media.map((_, i) => (
+            <div
+              key={i}
+              style={{
+                width: activeImgIndex == i ? "30px" : "7.5px",
+                backgroundColor: activeImgIndex == i ? "black" : "#c0c0c0",
+                cursor: activeImgIndex == i ? "default" : "pointer",
+              }}
+              onClick={() =>
+                imgcontainerRef.current?.scrollTo({
+                  left: i * imgcontainerRef.current.clientWidth,
+                  behavior: "smooth",
+                })
+              }
+            />
+          ))}
         </div>
-        <div style={{ display: props.overlay.sold ? "none" : "flex" }}>
-          <p>{props.overlay.type}</p>
-          <p>{priceFormatters.naira.format(price)}</p>
+        <div style={{ display: data.sold ? "none" : "flex" }}>
+          <p>{data.type}</p>
+          {/* <p>{priceFormatters.naira.format(price)}</p> */}
+          <p>{priceFormatters.naira.format(10899)}</p>
         </div>
-        <button style={{ display: props.overlay.sold ? "none" : "block" }}>
+        <button style={{ display: data.sold ? "none" : "block" }}>
           ACQUIRE
         </button>
-        {props.overlay.sold && (
+        {data.sold && (
           <p>
             RELEASED{" "}
-            {new Date(props.overlay.created_at)
+            {new Date(data.created_at)
               .toLocaleString("en-US", { month: "short", year: "numeric" })
               .toUpperCase()}{" "}
             [ARCHIVED]
