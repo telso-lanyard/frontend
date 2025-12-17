@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 import "./style.scss";
+import api from "../../../../utils/api";
 import * as icons from "../../../../assets";
 import Input from "../../../../components/Input";
-import Request from "../../../../utils/requests";
 import style_map from "../../../../utils/style_map";
 
 function Auth({ ...props }) {
@@ -14,50 +15,38 @@ function Auth({ ...props }) {
   const [password, setpassword] = useState("");
   const [passwordVisibility, setpasswordVisibility] = useState(false);
 
-  function fetch() {
-    Request.get({
-      url_mod: "auth/login",
-      query: {
-        email: email,
-        password: password,
-        collection: "admin",
-      },
-    })
-      .then((res) => {
-        props.setuserID(res.data.user_id);
-        props.setuserToken(res.data.token);
+  const loginMutation = useMutation({
+    mutationFn: () =>
+      api
+        .post("auth/login", { email, password, collection: "admin" })
+        .then((res) => res.data),
 
-        toast.success(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            You've logged in successfully
-          </div>,
-          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
-        );
-        navigate("/admin/");
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        toast.error(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            {`${error.response.data.message}`}
-          </div>,
-          {
-            hideProgressBar: true,
-            closeOnClick: true,
-            autoClose: 3000,
-          }
-        );
-      });
+    onSuccess: (data) => {
+      props.setuserID(data.user_id);
+      props.setuserToken(data.token);
+
+      navigate("/admin");
+      toast.success("You've logged in successfully");
+    },
+  });
+
+  async function handleLogin() {
+    try {
+      // if (
+      //   !(await validation(
+      //     z.object({
+      //       email: userSchema.shape.email,
+      //       password: userSchema.shape.password,
+      //     }),
+      //     { email, password }
+      //   ))
+      // )
+      //   return;
+
+      loginMutation.mutate();
+    } catch (err) {
+      console.log("Validation failed");
+    }
   }
 
   return (
@@ -101,7 +90,9 @@ function Auth({ ...props }) {
           </div>
         </div>
       </div>
-      <div onClick={fetch}>Continue</div>
+      <button onClick={handleLogin} disabled={loginMutation.isPending}>
+        Continue
+      </button>
     </div>
   );
 }

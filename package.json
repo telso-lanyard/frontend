@@ -15,6 +15,7 @@
   "dependencies": {
     "@fontsource-variable/oswald": "^5.2.5",
     "@fontsource/give-you-glory": "^5.2.8",
+    "@tanstack/react-query": "^5.90.12",
     "axios": "^1.8.4",
     "gsap": "^3.13.0",
     "postcss-preset-env": "^10.1.5",

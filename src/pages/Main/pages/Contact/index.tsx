@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useMutation } from "@tanstack/react-query";
 
 import "./style.scss";
 import Input from "../../../../components/Input";
-import Request from "../../../../utils/requests";
+import api from "../../../../utils/api";
 import style_map from "../../../../utils/style_map";
 
 function Contact() {
@@ -14,63 +15,55 @@ function Contact() {
     number: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const fetch = () => {
-    if (isSubmitting) return;
+  const contactMutation = useMutation({
+    mutationFn: () => api.post("contact", formData).then((res) => res.data),
 
-    let isValid = true;
-    Object.keys(formData).forEach((el) => {
-      if (formData[el as keyof typeof formData].length <= 1) {
-        isValid = false;
-        toast.error(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            {`${
-              el.charAt(0).toUpperCase() + el.slice(1)
-            } not entered or value entered is not valid`}
-          </div>,
-          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
-        );
-      }
-    });
+    onSuccess: () => {
+      toast.success(
+        <div
+          style={{
+            fontSize: "var(--fs--1)",
+            padding: "3.75px 15px",
+          }}
+        >
+          Message sent successfully
+        </div>,
+        { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+      );
+    },
+  });
 
-    if (isValid) {
-      setIsSubmitting(true);
-      Request.post({
-        url_mod: "contact",
-        body: formData,
-      })
-        .then((_) => {
-          toast.success(
+  async function contact() {
+    try {
+      Object.keys(formData).forEach((el) => {
+        if (formData[el as keyof typeof formData].length <= 1) {
+          return toast.error(
             <div
               style={{
                 fontSize: "var(--fs--1)",
                 padding: "3.75px 15px",
               }}
             >
-              Message sent successfully
+              {`${
+                el.charAt(0).toUpperCase() + el.slice(1)
+              } not entered or value entered is not valid`}
             </div>,
             { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
           );
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        });
+        }
+      });
+
+      contactMutation.mutate();
+    } catch (err) {
+      console.log("Validation failed");
     }
-  };
+  }
 
   return (
     <>
@@ -116,7 +109,7 @@ function Contact() {
             onChange={handleChange}
           ></textarea>
         </div>
-        <div onClick={fetch}>SEND</div>
+        <div onClick={contact}>SEND</div>
       </div>
     </>
   );

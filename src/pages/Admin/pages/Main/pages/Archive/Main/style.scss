@@ -1,0 +1,73 @@
+#admin_main_wrapper {
+  width: 100%;
+  height: fit-content;
+
+  padding: 20px 20px 80px 20px;
+
+  @include flex(flex-start, flex-start, column);
+}
+
+#admin_main_wrapper > *:nth-child(1) {
+  color: white;
+  background-color: black;
+
+  padding: 7.5px 40px;
+  align-self: flex-end;
+
+  font-size: fs(-0.5);
+
+  cursor: pointer;
+  text-decoration: none;
+
+  margin-bottom: 40px;
+}
+
+#admin_main_wrapper > *:nth-child(2) {
+  width: 100%;
+  height: fit-content;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 75px;
+
+  margin-inline: auto;
+}
+
+#admin_main_wrapper > *:nth-child(2) > div {
+  height: fit-content;
+  width: 100%;
+  max-width: 500px;
+
+  @include flex(flex-start, flex-start, column);
+}
+
+#admin_main_wrapper > *:nth-child(2) > div > img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+
+  margin-bottom: 12.5px;
+}
+
+#admin_main_wrapper > *:nth-child(2) > div > *:nth-child(2) {
+  font-size: fs(-0.25);
+  max-width: 100%;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#admin_main_wrapper > *:nth-child(2) > div > *:nth-child(3) {
+  width: 45px;
+  aspect-ratio: 1/1;
+
+  align-self: flex-end;
+  @include flex(center, center);
+
+  padding: 2.5%;
+  margin-top: 15px;
+  border-radius: 50%;
+  border: 2px solid black;
+}

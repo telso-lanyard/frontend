@@ -1,51 +1,49 @@
+import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { useState, useEffect } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import "./style.scss";
 import * as assets from "../../../../../../assets";
-import Request from "../../../../../../utils/requests";
+import api from "../../../../../../utils/api";
 
 function Payment({ ...props }) {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
-  function pay() {
-    if (loading) return;
-    setLoading(true);
-
-    Request.post({
-      url_mod: "orders",
-      body: {
-        cart: props.cart,
-        address: props.address,
-        contact: props.contact,
-      },
-    })
-      .then((res: any) => {
-        Request.post({
-          url_mod: "payment",
-          body: {
-            order_id: res.data.id,
-            email: props.contact.email,
-          },
+  const orderMutation = useMutation({
+    mutationFn: () =>
+      api
+        .post("orders", {
+          cart: props.cart,
+          address: props.address,
+          contact: props.contact,
         })
-          .then((res: any) => {
-            // navigate(props.route);
+        .then((res) => res.data),
 
-            window.location.href = res.data.data.authorization_url;
-            toast.success("Payment processed successfully");
-          })
-          .catch((err) => {
-            console.error(err);
-            toast.error(err?.response?.data?.message || "Something went wrong");
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-        toast.error(err?.response?.data?.message || "Something went wrong");
-      })
-      .finally(() => setLoading(false));
+    onSuccess: (data) => payMutation.mutate(data),
+  });
+
+  const payMutation = useMutation({
+    mutationFn: (data: any) =>
+      api
+        .post("payment", {
+          order_id: data.id,
+          email: props.contact.email,
+        })
+        .then((res) => res.data),
+
+    onSuccess: (data) => {
+      window.location.href = data.data.authorization_url;
+      toast.success("Payment processed successfully");
+    },
+  });
+
+  async function pay() {
+    try {
+      orderMutation.mutate();
+    } catch (err) {
+      console.log("Validation failed");
+    }
   }
 
   useEffect(() => {

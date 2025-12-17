@@ -22,6 +22,9 @@ export { default as bag } from "./icons/bag.svg";
 export { default as bookmark } from "./icons/bookmark.svg";
 export { default as truck } from "./icons/truck.svg";
 export { default as circle_plus } from "./icons/circle_plus.svg";
+export { default as arrow_45deg } from "./icons/arrow_45deg.svg";
+export { default as image_arrow_up } from "./icons/image_arrow_up.svg";
+export { default as delete } from "./icons/delete.svg";
 
 export { default as hero_bg } from "./images/hero-bg.png";
 export { default as paystack_logo } from "./images/paystack_logo.png";

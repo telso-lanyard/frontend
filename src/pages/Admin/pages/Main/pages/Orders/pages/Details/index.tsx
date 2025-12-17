@@ -1,14 +1,14 @@
-import { toast } from "react-toastify";
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+// import { toast } from "react-toastify";
+import { useState } from "react";
+// import { useLocation } from "react-router-dom";
 
 import "./style.scss";
-import Request from "../../../../../../../../utils/requests";
+// import Request from "../../../../../../../../utils/api";
 import style_map from "../../../../../../../../utils/style_map";
 
-function Details({ ...props }) {
-  const location = useLocation();
-  const [order, setOrder] = useState<{
+function Details() {
+  // const location = useLocation();
+  const [order, _] = useState<{
     _id: string;
     trackID: number;
     contact: { name: string; phone: string; address: string; email: string };
@@ -22,78 +22,78 @@ function Details({ ...props }) {
     }[];
   }>();
 
-  function fetch() {
-    Request.get({
-      url_mod: `orders/${
-        location.pathname.split("/")[location.pathname.split("/").length - 1]
-      }`,
-      token: props.userToken,
-    })
-      .then((res) => {
-        setOrder(res.data.documents[0]);
-      })
-      .catch((error) => {
-        console.error("Error fetching orders:", error);
-        toast.error(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            {`${error.response.data.message}`}
-          </div>,
-          {
-            hideProgressBar: true,
-            closeOnClick: true,
-            autoClose: 3000,
-          }
-        );
-      });
-  }
+  // function fetch() {
+  //   Request.get({
+  //     url_mod: `orders/${
+  //       location.pathname.split("/")[location.pathname.split("/").length - 1]
+  //     }`,
+  //     token: props.userToken,
+  //   })
+  //     .then((res) => {
+  //       setOrder(res.data.documents[0]);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching orders:", error);
+  //       toast.error(
+  //         <div
+  //           style={{
+  //             fontSize: "var(--fs--1)",
+  //             padding: "3.75px 15px",
+  //           }}
+  //         >
+  //           {`${error.response.data.message}`}
+  //         </div>,
+  //         {
+  //           hideProgressBar: true,
+  //           closeOnClick: true,
+  //           autoClose: 3000,
+  //         }
+  //       );
+  //     });
+  // }
 
-  function update(id: string = "", data: {}) {
-    Request.patch({
-      url_mod: `orders/${id}`,
-      token: props.userToken,
-      body: data,
-    })
-      .then(() => {
-        fetch();
+  // function update(id: string = "", data: {}) {
+  //   Request.patch({
+  //     url_mod: `orders/${id}`,
+  //     token: props.userToken,
+  //     body: data,
+  //   })
+  //     .then(() => {
+  //       fetch();
 
-        toast.success(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            Order updated successfully
-          </div>,
-          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
-        );
-      })
-      .catch((error) => {
-        console.error("Error updating orders:", error);
-        toast.error(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            {`${error.response.data.message}`}
-          </div>,
-          {
-            hideProgressBar: true,
-            closeOnClick: true,
-            autoClose: 3000,
-          }
-        );
-      });
-  }
+  //       toast.success(
+  //         <div
+  //           style={{
+  //             fontSize: "var(--fs--1)",
+  //             padding: "3.75px 15px",
+  //           }}
+  //         >
+  //           Order updated successfully
+  //         </div>,
+  //         { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+  //       );
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error updating orders:", error);
+  //       toast.error(
+  //         <div
+  //           style={{
+  //             fontSize: "var(--fs--1)",
+  //             padding: "3.75px 15px",
+  //           }}
+  //         >
+  //           {`${error.response.data.message}`}
+  //         </div>,
+  //         {
+  //           hideProgressBar: true,
+  //           closeOnClick: true,
+  //           autoClose: 3000,
+  //         }
+  //       );
+  //     });
+  // }
 
-  useEffect(() => fetch(), []);
+  // useEffect(() => fetch(), []);
 
   return (
     <div
@@ -126,7 +126,7 @@ function Details({ ...props }) {
             color: order?.paid ? "white" : "black",
             background: order?.paid ? "black" : "transparent",
           }}
-          onClick={() => update(order?._id, { ...order, paid: true })}
+          // onClick={() => update(order?._id, { ...order, paid: true })}
         >
           Paid
         </div>
@@ -135,7 +135,7 @@ function Details({ ...props }) {
             color: order?.delivered ? "white" : "black",
             background: order?.delivered ? "black" : "transparent",
           }}
-          onClick={() => update(order?._id, { ...order, delivered: true })}
+          // onClick={() => update(order?._id, { ...order, delivered: true })}
         >
           Delivered
         </div>

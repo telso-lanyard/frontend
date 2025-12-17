@@ -30,3 +30,28 @@ export const deliveryDate = (days: number) => {
 
   return date.toLocaleDateString("en-US", options);
 };
+
+export const models = [
+  "iPhone X / Xs",
+  "iPhone Xs Max",
+  "iPhone Xr",
+  "iPhone 11",
+  "iPhone 11 Pro",
+  "iPhone 11 Pro Max",
+  "iPhone 12 / 12 Pro",
+  "iPhone 12 Pro Max",
+  "iPhone 13 / 14",
+  "iPhone 13 Pro",
+  "iPhone 13 Pro Max",
+  "iPhone 14 Pro",
+  "iPhone 14 Pro Max",
+  "iPhone 15",
+  "iPhone 15 Pro",
+  "iPhone 15 Pro Max",
+  "iPhone 16",
+  "iPhone 16 Pro",
+  "iPhone 16 Pro Max",
+  "iPhone 17",
+  "iPhone 17 Pro",
+  "iPhone 17 Pro Max",
+] as const;

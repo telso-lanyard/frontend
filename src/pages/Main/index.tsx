@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import Orders from "./pages/Orders";
 import Contact from "./pages/Contact";
+import Archive from "./pages/Archive";
 import Discover from "./pages/Discover";
 import Checkout from "./pages/Checkout";
 import { price } from "../../utils/data";
@@ -104,6 +105,10 @@ function Main({ ...props }) {
           }
         />
         <Route path="contact" element={<Contact />} />
+        <Route
+          path="archive"
+          element={<Archive pageWidth={props.pageWidth} />}
+        />
         <Route path="discover/*" element={<Discover />} />
         <Route
           path="orders/*"

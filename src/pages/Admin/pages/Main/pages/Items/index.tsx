@@ -1,9 +1,8 @@
-import { toast } from "react-toastify";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./style.scss";
 import urls from "../../../../../../utils/urls";
-import Request from "../../../../../../utils/requests";
+// import Request from "../../../../../../utils/api";
 import Input from "../../../../../../components/Input";
 import style_map from "../../../../../../utils/style_map";
 
@@ -16,74 +15,74 @@ function Items({ ...props }) {
     }[]
   >([]);
 
-  function update(id: string) {
-    Request.patch({
-      url_mod: `items/${id}`,
-      token: props.userToken,
-      body: items.filter((item) => item._id == id)[0],
-    })
-      .then(() => {
-        fetch();
-        toast.success(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            Quantity updated successfully
-          </div>,
-          { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
-        );
-      })
-      .catch((error) => {
-        console.error("Error patching items:", error);
-        toast.error(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            {`${error.response.data.message}`}
-          </div>,
-          {
-            hideProgressBar: true,
-            closeOnClick: true,
-            autoClose: 3000,
-          }
-        );
-      });
-  }
+  // function update(id: string) {
+  //   Request.patch({
+  //     url_mod: `items/${id}`,
+  //     token: props.userToken,
+  //     body: items.filter((item) => item._id == id)[0],
+  //   })
+  //     .then(() => {
+  //       fetch();
+  //       toast.success(
+  //         <div
+  //           style={{
+  //             fontSize: "var(--fs--1)",
+  //             padding: "3.75px 15px",
+  //           }}
+  //         >
+  //           Quantity updated successfully
+  //         </div>,
+  //         { hideProgressBar: true, closeOnClick: true, autoClose: 3000 }
+  //       );
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error patching items:", error);
+  //       toast.error(
+  //         <div
+  //           style={{
+  //             fontSize: "var(--fs--1)",
+  //             padding: "3.75px 15px",
+  //           }}
+  //         >
+  //           {`${error.response.data.message}`}
+  //         </div>,
+  //         {
+  //           hideProgressBar: true,
+  //           closeOnClick: true,
+  //           autoClose: 3000,
+  //         }
+  //       );
+  //     });
+  // }
 
-  function fetch() {
-    Request.get({
-      url_mod: "items",
-    })
-      .then((res) => {
-        setItems(res.data.documents.reverse());
-      })
-      .catch((error) => {
-        console.error("Error fetching items:", error);
-        toast.error(
-          <div
-            style={{
-              fontSize: "var(--fs--1)",
-              padding: "3.75px 15px",
-            }}
-          >
-            {`${error.response.data.message}`}
-          </div>,
-          {
-            hideProgressBar: true,
-            closeOnClick: true,
-            autoClose: 3000,
-          }
-        );
-      });
-  }
+  // function fetch() {
+  //   Request.get({
+  //     url_mod: "items",
+  //   })
+  //     .then((res) => {
+  //       setItems(res.data.documents.reverse());
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching items:", error);
+  //       toast.error(
+  //         <div
+  //           style={{
+  //             fontSize: "var(--fs--1)",
+  //             padding: "3.75px 15px",
+  //           }}
+  //         >
+  //           {`${error.response.data.message}`}
+  //         </div>,
+  //         {
+  //           hideProgressBar: true,
+  //           closeOnClick: true,
+  //           autoClose: 3000,
+  //         }
+  //       );
+  //     });
+  // }
 
-  useEffect(() => fetch(), []);
+  // useEffect(() => fetch(), []);
 
   return (
     <div id="admin_items_wrapper">
@@ -133,7 +132,7 @@ function Items({ ...props }) {
                     }}
                   />
                 </div>
-                <div onClick={() => update(item._id)}>Update</div>
+                {/* <div onClick={() => update(item._id)}>Update</div> */}
               </div>
             </div>
           ))}

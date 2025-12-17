@@ -2,9 +2,8 @@ import gsap from "gsap";
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import "./style.css";
+import "./style.scss";
 import * as assets from "../../assets";
-import style_map from "../../utils/style_map";
 
 function Nav({ ...props }) {
   const navRef = useRef<HTMLDivElement>(null);
@@ -58,7 +57,6 @@ function Nav({ ...props }) {
       className="nav_wrapper"
       ref={navRef}
       style={{
-        ...style_map.flex(["center", "space-between"]),
         background:
           props.style?.background ?? (scrollTop > 10 ? "transparent" : "white"),
         backdropFilter: scrollTop > 10 ? "blur(10px)" : "none",
@@ -67,16 +65,23 @@ function Nav({ ...props }) {
     >
       <div
         onClick={() => props.setProfile(!props.profile)}
-        style={style_map.flex(["center", "space-between", "column"])}
+        style={{
+          display: props.logo_only && "none",
+        }}
         className={props.profile ? "close_burger" : ""}
       >
         <div />
         <div />
       </div>
-      <Link to="/" style={style_map.flex(["center", "center"])}>
+      <Link to="/">
         <img src={assets.logo_red} alt="" />
       </Link>
-      <Link to="/orders" style={style_map.flex(["center", "center"])}>
+      <Link
+        to="/orders"
+        style={{
+          display: props.logo_only && "none",
+        }}
+      >
         <img src={assets.bag} alt="" />
       </Link>
     </nav>
