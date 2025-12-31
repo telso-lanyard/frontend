@@ -14,7 +14,9 @@ export const priceFormatters = {
   naira: new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency: "NGN",
-    minimumFractionDigits: 2,
+    // minimumFractionDigits: 2,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   }),
 };
 

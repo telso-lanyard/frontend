@@ -1,62 +1,37 @@
-import gsap from "gsap";
 import { useRef, useState, useEffect } from "react";
 
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
 
 function Carousel({ ...props }) {
-  const [state, setState] = useState(1);
-  const imageEl = useRef<HTMLImageElement>(null);
-  const arrowElLeft = useRef<HTMLDivElement>(null);
-  const arrowElRight = useRef<HTMLDivElement>(null);
+  const imgcontainerRef = useRef<HTMLDivElement>(null);
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
 
   useEffect(() => {
-    const el = imageEl.current;
-    if (!el) return;
+    const container = imgcontainerRef.current;
+    if (!container) return;
 
-    const tl = gsap.timeline();
-    tl.to(el, { opacity: 0.95, duration: 0.2 })
-      .call(() => {
-        el.src =
-          assets[
-            `lanyard_store_bg_${
-              props.type || "elevation"
-            }_2_${state}` as keyof typeof assets
-          ];
-      })
-      .to(el, { opacity: 1, duration: 0.1, ease: "expo.out" });
+    const images = Array.from(container.children);
+    if (!images.length) return;
 
-    return () => {
-      tl.kill();
-    };
-  }, [state, props.type]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = images.indexOf(entry.target);
+            setActiveImgIndex(index);
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.6,
+      }
+    );
 
-  useEffect(() => {
-    if (!arrowElLeft || !arrowElRight) return;
-
-    arrowElLeft.current!.style.transform = "rotate(-90deg) translateX(-.25px)";
-    arrowElRight.current!.style.transform = "rotate(90deg) translateX(.25px)";
-
-    if (arrowElLeft.current?.nextSibling instanceof HTMLElement) {
-      const el = arrowElLeft.current.nextSibling;
-      const rect = el.getBoundingClientRect();
-
-      arrowElLeft.current.style.left = `${
-        rect.left - arrowElLeft.current.getBoundingClientRect().width / 2
-      }px`;
-    }
-
-    if (arrowElRight.current?.previousSibling instanceof HTMLElement) {
-      const el = arrowElRight.current.previousSibling;
-      const rect = el.getBoundingClientRect();
-
-      arrowElRight.current.style.left = `${
-        rect.left +
-        rect.width -
-        arrowElRight.current.getBoundingClientRect().width / 2
-      }px`;
-    }
-  }, [props.pageWidth]);
+    images.forEach((img) => observer.observe(img));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div id="store_lanyard_mobile_carousel_wrapper">
@@ -66,43 +41,41 @@ function Carousel({ ...props }) {
           : "Forward, with purpose."}
       </div>
       <div>
-        <div>
-          <img ref={imageEl} alt="" />
+        <div ref={imgcontainerRef}>
+          {Array(4)
+            .fill("")
+            .map((_, i) => (
+              <img
+                src={
+                  assets[
+                    `lanyard_store_bg_${props.type || "elevation"}_2_${
+                      i + 1
+                    }` as keyof typeof assets
+                  ]
+                }
+                alt=""
+              />
+            ))}
         </div>
         <div>
-          <div ref={arrowElLeft} onClick={() => setState(1)}>
-            <img
-              src={
-                assets[
-                  `arrow_down_${
-                    state == 1 ? "black" : "grey"
-                  }` as keyof typeof assets
-                ]
-              }
-              alt=""
-            />
-          </div>
           {Array(4)
             .fill("")
             .map((_, i) => (
               <div
                 key={i}
-                style={{ background: state == i + 1 ? "black" : "#B3B3B3" }}
-                onClick={() => setState(i + 1)}
+                style={{
+                  width: activeImgIndex == i ? "30px" : "7.5px",
+                  backgroundColor: activeImgIndex == i ? "black" : "#c0c0c0",
+                  cursor: activeImgIndex == i ? "default" : "pointer",
+                }}
+                onClick={() =>
+                  imgcontainerRef.current?.scrollTo({
+                    left: i * imgcontainerRef.current.clientWidth,
+                    behavior: "smooth",
+                  })
+                }
               />
             ))}
-          <div ref={arrowElRight} onClick={() => setState(4)}>
-            <img
-              src={
-                assets[
-                  `arrow_down_${
-                    state == 4 ? "black" : "grey"
-                  }` as keyof typeof assets
-                ]
-              }
-              alt=""
-            />
-          </div>
         </div>
       </div>
     </div>

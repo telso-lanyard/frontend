@@ -11,8 +11,20 @@
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(1) {
+  width: 70px;
   color: #c4c4c4;
+
   font-size: fs(-1);
+  font-weight: $fw-semi-bold;
+
+  background: linear-gradient(to right, #c4c4c4, #5e5e5e);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  display: inline-block;
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(2) {
@@ -24,6 +36,7 @@
 }
 
 #store_lanyard_desktop_wrapper > div:nth-child(1) > div:nth-child(3) {
+  font-size: fs(-0.5);
   font-weight: $fw-light;
 }
 

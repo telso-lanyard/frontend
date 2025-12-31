@@ -17,11 +17,15 @@
 
     margin-bottom: 7.5px;
     font-weight: $fw-wide-bold;
+
+    @media (max-width: 800px) {
+      text-align: left;
+    }
   }
 
   > h2 {
     font-size: fs(-0.5);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 
     font-weight: $fw-wide-bold;
   }
