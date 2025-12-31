@@ -12,7 +12,8 @@
 
 #store_lanyard_desktop_color_wrapper > div:nth-child(1) {
   font-size: fs(2);
-  font-weight: $fw-semi-bold;
+  font-weight: $fw-bold;
+  letter-spacing: -1.25px;
 
   margin-bottom: 20px;
 }

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import "./style.scss";
 import {
   price,
@@ -41,7 +39,7 @@ function Checkout({ ...props }) {
           </div>
           <div>{priceFormatters.naira.format(price)}</div>
           <div />
-          <div>Need a moment?</div>
+          <div style={{ letterSpacing: "-.75px" }}>Need a moment?</div>
           <div>
             Keep all your selections by saving this device to Your Saves, then
             come back anytime and pick up right where you left off.
@@ -57,7 +55,9 @@ function Checkout({ ...props }) {
           <div onClick={() => props.addToCart({ route: "/orders" })}>
             Add to Bag
           </div>
-          <Link to="/checkout">Checkout</Link>
+          <div onClick={() => props.addToCart({ route: "/checkout" })}>
+            Checkout
+          </div>
         </div>
       </div>
     </div>

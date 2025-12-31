@@ -8,7 +8,7 @@ function Color({ ...props }) {
         Finish. <span>Pick your favourite.</span>
       </div>
       <div>
-        Color -{" "}
+        Color {props.color && "- "}
         {Object.keys(colors).find(
           (k) => colors[k as keyof typeof colors] === props.color
         )}

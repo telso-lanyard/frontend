@@ -14,14 +14,20 @@
 }
 
 #checkout_payment_wrapper > img {
-  width: 13.25%;
-  min-width: 175px;
-  aspect-ratio: 3/1;
+  width: 18.75%;
+  min-width: 185px;
+  aspect-ratio: 3/0.875;
 
   padding: 15px;
   border-radius: 7.5px;
   margin-bottom: 45px;
   border: 1.5px solid $secondary;
+
+  @media (max-width: 1300px) {
+    & {
+      aspect-ratio: 3/1;
+    }
+  }
 }
 
 #checkout_payment_wrapper > div {

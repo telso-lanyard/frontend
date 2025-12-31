@@ -134,7 +134,9 @@ function CheckAvailability({ ...props }) {
             </div>
           </div>
           <p>
-            <strong>Pick it up at a TELSO Retail Store</strong>
+            <strong style={{ letterSpacing: "-.75px" }}>
+              Pick it up at a TELSO Retail Store
+            </strong>
           </p>
           <p>
             Search by city or zip code to see availability at nearby stores.

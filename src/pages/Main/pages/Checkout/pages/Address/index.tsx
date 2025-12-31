@@ -13,7 +13,10 @@ function Address({ ...props }) {
 
   function proceed() {
     for (const key of Object.keys(props.address)) {
-      if (props.address[key].length <= 2) {
+      if (
+        props.address[key].length <= 2 &&
+        key !== "Apartment, Suite, Bldg. (Optional)"
+      ) {
         return toast.info(`Enter a proper value for ${key}`);
       }
     }
@@ -29,8 +32,10 @@ function Address({ ...props }) {
 
   return (
     <div id="checkout_address_wrapper">
-      <h1>Where should we send your order?</h1>
-      <h2>Enter your name & address:</h2>
+      <header>
+        <h1>Where should we send your order?</h1>
+        <h2>Enter your name & address:</h2>
+      </header>
       <section>
         {Object.keys(order.shape.address.shape).map((el, i) => (
           <Input

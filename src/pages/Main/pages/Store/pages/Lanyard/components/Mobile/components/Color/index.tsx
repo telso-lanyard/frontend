@@ -39,7 +39,7 @@ function Color({ ...props }) {
       </div>
       <div>
         <div>
-          Color -{" "}
+          Color {props.color && "- "}
           {Object.keys(colors).find(
             (k) => colors[k as keyof typeof colors] === props.color
           )}

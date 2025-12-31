@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import "./style.scss";
 import * as assets from "../../../../../../../../../../assets";
 import {
@@ -42,7 +40,9 @@ function Checkout({ ...props }) {
         <div onClick={() => props.addToCart({ route: "/orders" })}>
           Add to Bag
         </div>
-        <Link to="/checkout">Checkout</Link>
+        <div onClick={() => props.addToCart({ route: "/checkout" })}>
+          Checkout
+        </div>
       </div>
     </div>
   );

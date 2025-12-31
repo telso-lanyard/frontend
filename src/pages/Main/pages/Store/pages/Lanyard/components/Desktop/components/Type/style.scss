@@ -5,14 +5,15 @@
   @include flex(center, center, column);
 }
 
-#store_lanyard_desktop_type_wrapper > div{
+#store_lanyard_desktop_type_wrapper > div {
   width: 100%;
   height: fit-content;
 }
 
-#store_lanyard_desktop_type_wrapper > div:nth-child(1){
-  font-size: fs(2.75);
+#store_lanyard_desktop_type_wrapper > div:nth-child(1) {
+  font-size: fs(3.5);
   font-weight: $fw-bold;
+  letter-spacing: -1.25px;
 
   text-align: center;
   margin-bottom: 55px;

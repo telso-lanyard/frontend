@@ -9,11 +9,12 @@
 }
 
 #checkout_header_wrapper > h1 {
+  font-size: fs(2.5);
   font-weight: $fw-medium;
 }
 
 #checkout_header_wrapper > h2 {
   color: $secondary;
-  font-size: fs(1.75);
+  font-size: fs(1);
   font-weight: $fw-light;
 }
