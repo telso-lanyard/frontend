@@ -57,35 +57,31 @@ function Nav({ ...props }) {
       className="nav_wrapper"
       ref={navRef}
       style={{
-        background:
-          props.style?.background ?? (scrollTop > 10 ? "transparent" : "white"),
         backdropFilter: scrollTop > 10 ? "blur(10px)" : "none",
         ...props.style,
       }}
     >
       <div
         onClick={() => props.setProfile(!props.profile)}
-        style={{
-          display: props.logo_only && "none",
-        }}
-        className={props.profile ? "close_burger" : ""}
+        style={{ display: props.logo_only && "none" }}
+        className={`nav_burger ${props.profile ? "close_burger" : ""}`}
       >
+        <div />
         <div />
         <div />
       </div>
 
-      <Link to="/">
-        <img src={assets.logo_red} alt="" />
+      <Link to="/" className="nav_logo">
+        <img src={assets.logo_red} alt="TELSO" />
       </Link>
 
       <Link
         to="/store"
         className="nav_store"
-        style={{
-          display: props.logo_only && "none",
-        }}
+        style={{ display: props.logo_only && "none" }}
       >
-        STORE
+        <span>STORE</span>
+        <img src={assets.bag} alt="" />
       </Link>
     </nav>
   );
