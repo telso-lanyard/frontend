@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cp -r dist/* ../backend/src/public/",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "sync": "npm run sync:to-backend",
     "sync:to-backend": "rsync -av --delete src/models/ ../backend/src/models && rsync -av src/utils/data.* ../backend/src/utils/",
