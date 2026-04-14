@@ -42,7 +42,7 @@ function Nav({ ...props }) {
   }, []);
 
   useEffect(() => {
-    document.querySelectorAll("nav_wrapper").forEach((el) => {
+    document.querySelectorAll(".nav_wrapper").forEach((el) => {
       const burger = el.children[0];
       if (props.profile) {
         gsap.delayedCall(0.15, () => burger.classList.add("close_burger"));
@@ -73,16 +73,19 @@ function Nav({ ...props }) {
         <div />
         <div />
       </div>
+
       <Link to="/">
         <img src={assets.logo_red} alt="" />
       </Link>
+
       <Link
-        to="/orders"
+        to="/store"
+        className="nav_store"
         style={{
           display: props.logo_only && "none",
         }}
       >
-        <img src={assets.bag} alt="" />
+        STORE
       </Link>
     </nav>
   );
